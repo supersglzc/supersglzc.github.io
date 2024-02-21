@@ -401,7 +401,22 @@ pre {
 
 
 
-
+.figures-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .figure-item {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center the figure content */
+  }
+  .figure-item img {
+    width: 100px; /* Adjust image size as needed */
+    height: auto;
+  }
+  .figure-item figcaption {
+    font-size: 0.8em; /* Adjust caption size as needed */
+  }
 
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
@@ -584,7 +599,7 @@ pre {
     <section id="results">
         <hr>
         <h2>AntMazes</h2>
-        <figure>
+        <!-- <figure>
             <a>
                 <img width="50%" src="materials/maze-v1.gif">
             </a>
@@ -594,8 +609,29 @@ pre {
             <p class="caption">
                 Accomplished goals at the end of 5 different evaluation episodes along training in the real world.
             </p> <br>
-        </figure>
-
+        </figure> -->
+        <div class="figures-row">
+            <figure class="figure-item">
+              <figcaption>Caption 1</figcaption>
+              <img src="materials/maze-v1.gif" alt="Description of Image 1">
+            </figure>
+          
+            <figure class="figure-item">
+              <figcaption>Caption 2</figcaption>
+              <img src="materials/maze-v1.gif" alt="Description of Image 2">
+            </figure>
+          
+            <figure class="figure-item">
+              <figcaption>Caption 3</figcaption>
+              <img src="materials/maze-v1.gif" alt="Description of Image 3">
+            </figure>
+          
+            <figure class="figure-item">
+              <figcaption>Caption 4</figcaption>
+              <img src="materials/maze-v1.gif" alt="Description of Image 4">
+            </figure>
+          </div>
+          
         <h2>AntMazes with random obstacles</h2>
         <figure>
             <a>
