@@ -419,19 +419,19 @@ pre {
 </style>
 <link rel="stylesheet" href="bootstrap-grid.css">
 
-<!-- <script type="text/javascript" src="../js/hidebib.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="../js/hidebib.js"></script>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'> -->
     <head>
         <title> Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta property="og:description" content="Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient Feedback"/>
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:creator" content="@marceltornev">
+        <meta name="twitter:creator" content="@stevenli">
         <meta name="twitter:title" content="Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient Feedback">
         <meta name="twitter:description" content="">
         <meta name="twitter:image" content="">
-    </head> -->
+    </head>
 
  <body>
 
@@ -477,14 +477,14 @@ pre {
                 <span class="material-icons"> code </span>
                 Code
             </a>
-            <a class="paper-btn" href="https://recorder-v3.slideslive.com/?share=88820&s=2fddd0c8-e26a-41cc-8de9-9e8e2ef2001e"  data-toggle="tooltip" title="Use Chrome to watch the video">
+            <!-- <a class="paper-btn" href="https://recorder-v3.slideslive.com/?share=88820&s=2fddd0c8-e26a-41cc-8de9-9e8e2ef2001e"  data-toggle="tooltip" title="Use Chrome to watch the video">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels" viewBox="0 0 16 16">
                     <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0M1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/>
                     <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1"/>
                     <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
                   </svg>
                 Talk
-                </a>
+                </a> -->
 
                   
             </div>
@@ -520,7 +520,7 @@ pre {
         <h2>Abstract</h2>
         <div class="flex-row">
             <p>
-                Exploration and reward specification are fundamental and intertwined challenges for reinforcement learning. Solving sequential decision making tasks with a non-trivial element of exploration requires either specifying carefully designed reward functions or relying on indiscriminate, novelty seeking exploration bonuses. Human supervisors can provide effective guidance in the loop to direct the exploration process, but prior methods to leverage this guidance require constant synchronous high-quality human feedback, which is expensive and impractical to obtain. In this work, we propose a technique - Human-Guided Exploration (HuGE), that is able to leverage low-quality feedback from non-expert users, which is infrequent, asynchronous and noisy, to guide exploration for reinforcement learning, without requiring careful reward specification. The key idea is to separate the challenges of directed exploration and policy learning - human feedback is used to direct exploration, while self-supervised policy learning is used to independently learn unbiased behaviors from the collected data. We show that this procedure can leverage noisy, asynchronous human feedback to learn tasks with no hand-crafted reward design or exploration bonuses. We show that \Method is able to learn a variety of challenging multi-stage robotic navigation and manipulation tasks in simulation using crowdsourced feedback from non-expert users. Moreover, this paradigm can be scaled to learning directly on real-world robots.
+                Deep reinforcement learning (RL) algorithms typically parameterize the policy as a deep network with deterministic output or as a Gaussian distribution, limiting the learning to a single behavioral mode. This paper presents Deep Diffusion Policy Gradient (DDiffPG), a novel deep Actor-Critic algorithm that trains multimodal policies, parameterized as diffusion models, from scratch while discovering and preserving versatile behaviors. Diffusion models emerged as a powerful framework for multimodal learning, showing promising results when applied to offline RL settings. However, the use of diffusion policies in online RL is hindered by the intractability of policy likelihood approximation, as well as, the greedy objective of RL methods that can easily skew the policy to a single mode, even if parameterized as a diffusion model. Our novel approach, DDiffPG, discovers multiple  modes by employing a hierarchical trajectory clustering method combined with novelty-based intrinsic motivation; on the other hand, DDiffPG utilizes mode-specific Q-learning to mitigate the inherent greediness of RL objectives, ensuring improving diffusion policy across all modes. Empirical studies validate DDiffPG's ability to master multimodal behaviors in complex, high-dimensional, and continuous control tasks, showcasing also proof-of-concept dynamic online replanning in mazes with unseen obstacles.
             </p>
         </div>
     </section>
