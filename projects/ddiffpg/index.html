@@ -470,11 +470,11 @@ pre {
         <div style="clear: both">
             <div class="paper-btn-parent">
             <a class="paper-btn" href="">
-                <span class="material-icons"> description </span> 
+                <!-- <span class="material-icons"> description </span>  -->
                  Paper
             </a>
             <a class="paper-btn" href="">
-                <span class="material-icons"> code </span>
+                <!-- <span class="material-icons"> code </span> -->
                 Code
             </a>
             <!-- <a class="paper-btn" href="https://recorder-v3.slideslive.com/?share=88820&s=2fddd0c8-e26a-41cc-8de9-9e8e2ef2001e"  data-toggle="tooltip" title="Use Chrome to watch the video">
@@ -583,7 +583,7 @@ pre {
 
     <section id="results">
         <hr>
-        <h2>Real World Experiments</h2>
+        <h2>AntMazes</h2>
         <figure>
             <a>
                 <img width="100%" src="materials/website_figures_real_robot.png">
@@ -592,7 +592,8 @@ pre {
                 Accomplished goals at the end of 5 different evaluation episodes along training in the real world.
             </p> <br>
         </figure>
-        <h2>Simulation Experiments</h2>  
+
+        <h2>Robotic Control</h2>  
             <figure>
                 <a>
                     <img width="100%" src="materials/website_figures_inline.png">
@@ -601,20 +602,19 @@ pre {
                     Six simulation benchmarks where we test HuGE and compare against baselines. <strong>Bandu</strong>, <strong>Block Stacking</strong>, <strong>Kitchen</strong>, and <strong>Pusher</strong>, are long-horizon manipulation tasks; <strong>Four rooms</strong> and <strong>Maze</strong> are 2D navigation tasks
                 </p> <br>
             </figure>
-            <figure>
-                <a>
-                    <img width="100%" src="materials/website_figures_success_curves.png">
-                </a>
-                <p class="caption">
-                    Success curves of HuGE on the proposed benchmarks compared to the baselines. 
-                    HuGE outperforms the rest of the baselines, some of which cannot solve the environment, while converging to the oracle accuracy. 
-                    For those curves that are not visible, it means they never succeeded and hence are all at 0 (see D.9 in the paper for distance curves). 
-                    Note the lexa-like benchmark is only computed in the four rooms benchmark. The curves are the average of 4 runs, and the shaded region corresponds to the standard deviation. 
-                </p> <br>
-            </figure>
             
 
-        <h2>Crowdsourced Experiments</h2>
+        <h2>Analysis</h2>
+        <figure>
+            <a>
+                <img width="100%" src="materials/website_figures_crowdsourcing.png">
+            </a>
+            <p class="caption">
+                <strong>left</strong>: Crowdsourcing experiment learning curves for the kitchen, <strong>middle</strong>: human annotators spanned 3 continents and 13 countries, <strong>right</strong>: screenshot of the interface for data collection.
+            </p> <br>
+        </figure>
+
+        <h2>Hyper-parameters</h2>
         <figure>
             <a>
                 <img width="100%" src="materials/website_figures_crowdsourcing.png">
@@ -626,37 +626,6 @@ pre {
         
     </section> 
     
-    <section id="robust_noise">
-        <hr>
-        <h2>Robustness to Learning from Noisy Human Feedback</h2>
-        <center>
-        <figure>
-            <video class="centered" width="100%" autoplay loop muted playsinline class="video-background " >
-                <source src="materials/huge_explained_rl.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </figure>
-
-    </section>
-
-    <section id="analysis">
-        <hr>
-        <h2>Analysis</h2>
-        <figure>
-            <a>
-                <img width="100%" src="materials/website_figures_analysis.png">
-            </a>
-            <p class="caption">
-                <strong>left</strong>: Learning a goal selector (<i>Ours</i>) needs on average 50% fewer labels than not (<i>DDL</i>) 
-                <strong>middle</strong>: As the noise in the feedback increases, so will the number of timesteps to succeed, however HuGE still finds a solution. 
-                <strong>right</strong>: HuGE is robust to noisy goal selectors since trajectories going to each mode will be sampled while if we ran RL the policy would become biased and fail. 
-                See Appendix E in the paper for more details.
-            </p> <br>
-        </figure>        
-        <hr>
-
-    </section> 
-
     <!--
     <section id="paper">
 
