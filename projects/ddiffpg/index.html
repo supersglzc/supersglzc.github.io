@@ -593,7 +593,17 @@ pre {
             </p> <br>
         </figure>
 
-        <h2>Robotic Control</h2>  
+        <h2>AntMazes with random obstacles</h2>
+        <figure>
+            <a>
+                <img width="100%" src="materials/website_figures_real_robot.png">
+            </a>
+            <p class="caption">
+                Accomplished goals at the end of 5 different evaluation episodes along training in the real world.
+            </p> <br>
+        </figure>
+
+        <h2>Robotic control</h2>  
             <figure>
                 <a>
                     <img width="100%" src="materials/website_figures_inline.png">
@@ -603,29 +613,40 @@ pre {
                 </p> <br>
             </figure>
             
-
-        <h2>Analysis</h2>
-        <figure>
-            <a>
-                <img width="100%" src="materials/website_figures_crowdsourcing.png">
-            </a>
-            <p class="caption">
-                <strong>left</strong>: Crowdsourcing experiment learning curves for the kitchen, <strong>middle</strong>: human annotators spanned 3 continents and 13 countries, <strong>right</strong>: screenshot of the interface for data collection.
-            </p> <br>
-        </figure>
-
-        <h2>Hyper-parameters</h2>
-        <figure>
-            <a>
-                <img width="100%" src="materials/website_figures_crowdsourcing.png">
-            </a>
-            <p class="caption">
-                <strong>left</strong>: Crowdsourcing experiment learning curves for the kitchen, <strong>middle</strong>: human annotators spanned 3 continents and 13 countries, <strong>right</strong>: screenshot of the interface for data collection.
-            </p> <br>
-        </figure>
         
     </section> 
     
+    <section id="robust_noise">
+        <hr>
+        <h2>Analysis</h2>
+        <center>
+        <figure>
+            <video class="centered" width="100%" autoplay loop muted playsinline class="video-background " >
+                <source src="materials/huge_explained_rl.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </figure>
+
+    </section>
+
+    <section id="analysis">
+        <hr>
+        <h2>Impact of hyper-parameters</h2>
+        <figure>
+            <a>
+                <img width="100%" src="materials/website_figures_analysis.png">
+            </a>
+            <p class="caption">
+                <strong>left</strong>: Learning a goal selector (<i>Ours</i>) needs on average 50% fewer labels than not (<i>DDL</i>) 
+                <strong>middle</strong>: As the noise in the feedback increases, so will the number of timesteps to succeed, however HuGE still finds a solution. 
+                <strong>right</strong>: HuGE is robust to noisy goal selectors since trajectories going to each mode will be sampled while if we ran RL the policy would become biased and fail. 
+                See Appendix E in the paper for more details.
+            </p> <br>
+        </figure>        
+        <hr>
+
+    </section> 
+
     <!--
     <section id="paper">
 
