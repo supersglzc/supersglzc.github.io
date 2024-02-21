@@ -619,6 +619,7 @@ pre {
     <section id="robust_noise">
         <hr>
         <h2>Analysis</h2>
+        <br>
         <center>
         <figure>
             <a>
@@ -636,15 +637,12 @@ pre {
         <h2>Impact of hyper-parameters</h2>
         <figure>
             <a>
-                <img width="100%" src="materials/website_figures_analysis.png">
+                <img width="100%" src="materials/hyper-parameters.png">
             </a>
             <p class="caption">
-                <strong>left</strong>: Learning a goal selector (<i>Ours</i>) needs on average 50% fewer labels than not (<i>DDL</i>) 
-                <strong>middle</strong>: As the noise in the feedback increases, so will the number of timesteps to succeed, however HuGE still finds a solution. 
-                <strong>right</strong>: HuGE is robust to noisy goal selectors since trajectories going to each mode will be sampled while if we ran RL the policy would become biased and fail. 
-                See Appendix E in the paper for more details.
+                Six simulation benchmarks where we test HuGE and compare against baselines. <strong>Bandu</strong>, <strong>Block Stacking</strong>, <strong>Kitchen</strong>, and <strong>Pusher</strong>, are long-horizon manipulation tasks; <strong>Four rooms</strong> and <strong>Maze</strong> are 2D navigation tasks
             </p> <br>
-        </figure>        
+        </figure>   
         <hr>
 
     </section> 
