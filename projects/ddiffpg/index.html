@@ -176,7 +176,7 @@ p {
     color: #666;
     margin-top: 4px;
     margin-bottom: 10px;
-	text-align: left;
+	text-align: center;
 }
 
 
@@ -632,9 +632,9 @@ pre {
               <img src="materials/v4.gif" alt="Description of Image 4">
             </figure>
           </div>
-        <!-- <p class="caption">
-            Six simulation benchmarks where we test HuGE and compare against baselines. <strong>Bandu</strong>, <strong>Block Stacking</strong>, <strong>Kitchen</strong>, and <strong>Pusher</strong>, are long-horizon manipulation tasks; <strong>Four rooms</strong> and <strong>Maze</strong> are 2D navigation tasks
-        </p> <br> -->
+        <p class="caption">
+            DDiffPG demonstrates consistent exploration and acquisition of multiple behaviors. In AntMazes, multiple paths exist. DDiffPG is capable of learning and freely executing all these paths
+        </p> <br>
           
         <h2>AntMazes with random obstacles</h2>
         <figure>
@@ -652,9 +652,9 @@ pre {
                 </figure>
               
               </div>
-            <!-- <p class="caption">
-                Accomplished goals at the end of 5 different evaluation episodes along training in the real world.
-            </p> <br> -->
+            <p class="caption">
+                A practical application of a trained multimodal policy in online replanning, particularly in nonstationary environments. To capitalize on this feature, we developed a proof-of-concept planner, which iteratively tests different modes until a successful route is found. 
+            </p> <br>
         </figure>
 
         <h2>Robotic control</h2>  
@@ -679,9 +679,9 @@ pre {
               <img src="materials/cabinet.gif" alt="Description of Image 4">
             </figure>
           </div>
-        <!-- <p class="caption">
-            Six simulation benchmarks where we test HuGE and compare against baselines. <strong>Bandu</strong>, <strong>Block Stacking</strong>, <strong>Kitchen</strong>, and <strong>Pusher</strong>, are long-horizon manipulation tasks; <strong>Four rooms</strong> and <strong>Maze</strong> are 2D navigation tasks
-        </p> <br> -->
+        <p class="caption">
+            DDiffPG is capable of mastering different behaviors in challenging robotic manipulation tasks. For example, in Cabinet-Open, the agent can move the arm to either layer and subsequently pull the door open.
+        </p> <br>
             
         
     </section> 
@@ -693,10 +693,26 @@ pre {
         <center>
         <figure>
             <a>
-                <img width="100%" src="materials/analysis.png">
+                <img width="100%" src="materials/analysis (3).png">
             </a>
             <p class="caption">
-                Given a collection of goal-reached trajectories, each consisting of a sequence of state-action pairs, we categorize them into clusters and consider each a behavior mode. In practice, we use an unsupervised hierarchical clustering approach with Dynamic Time Warping (DTW) measure.
+                We demonstrate the potential of DDiffPG in exploring better using the exploration density maps and state coverage rates in the AntMaze environments. In selected results for AntMaze-v3, DDiffPG explores multiple paths to the two separate goal positions, contrasting sharply with baselines that typically discover only a single path.
+            </p> <br>
+        </figure>
+        <figure>
+            <a>
+                <img width="100%" src="materials/analysis (1).png">
+            </a>
+            <p class="caption">
+                Given a collection of goal-reached trajectories, each consisting of a sequence of state-action pairs, we categorize them into clusters and consider each a behavior mode (each color represents a mode). In practice, we use an unsupervised hierarchical clustering approach with Dynamic Time Warping (DTW) measure.
+            </p> <br>
+        </figure>
+        <figure>
+            <a>
+                <img width="100%" src="materials/analysis (2).png">
+            </a>
+            <p class="caption">
+                Given a collection of goal-reached trajectories, each consisting of a sequence of state-action pairs, we categorize them into clusters and consider each a behavior mode (each color represents a mode). In practice, we use an unsupervised hierarchical clustering approach with Dynamic Time Warping (DTW) measure.
             </p> <br>
         </figure>
 
