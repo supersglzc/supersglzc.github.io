@@ -412,7 +412,7 @@ pre {
     text-align: center; /* Center the figure content */
   }
   .figure-item img {
-    width: 200px; /* Adjust image size as needed */
+    width: 180px; /* Adjust image size as needed */
     height: 150px;
   }
   .figure-item figcaption {
@@ -485,7 +485,7 @@ pre {
 
         <div style="clear: both">
             <div class="paper-btn-parent">
-            <a class="paper-btn" href="">
+            <a class="paper-btn" href="https://arxiv.org/abs/2406.00681">
                 <!-- <span class="material-icons"> description </span>  -->
                  Paper
             </a>
@@ -536,7 +536,7 @@ pre {
         <h2>Abstract</h2>
         <div class="flex-row">
             <p>
-                Deep reinforcement learning (RL) algorithms typically parameterize the policy as a deep network with deterministic output or as a Gaussian distribution, limiting the learning to a single behavioral mode. This paper presents Deep Diffusion Policy Gradient (DDiffPG), a novel deep Actor-Critic algorithm that trains multimodal policies, parameterized as diffusion models, from scratch while discovering and preserving versatile behaviors. Diffusion models emerged as a powerful framework for multimodal learning, showing promising results when applied to offline RL settings. However, the use of diffusion policies in online RL is hindered by the intractability of policy likelihood approximation, as well as, the greedy objective of RL methods that can easily skew the policy to a single mode, even if parameterized as a diffusion model. Our novel approach, DDiffPG, discovers multiple  modes by employing a hierarchical trajectory clustering method combined with novelty-based intrinsic motivation; on the other hand, DDiffPG utilizes mode-specific Q-learning to mitigate the inherent greediness of RL objectives, ensuring improving diffusion policy across all modes. Empirical studies validate DDiffPG's ability to master multimodal behaviors in complex, high-dimensional, and continuous control tasks, showcasing also proof-of-concept dynamic online replanning in mazes with unseen obstacles.
+                Deep reinforcement learning (RL) algorithms typically parameterize the policy as a deep network that outputs either a deterministic action or a stochastic one modeled as a Gaussian distribution, hence restricting learning to a single behavioral mode. Meanwhile, diffusion models emerged as a powerful framework for multimodal learning. However, the use of diffusion policies in online RL is hindered by the intractability of policy likelihood approximation, as well as the greedy objective of RL methods that can easily skew the policy to a single mode. This paper presents Deep Diffusion Policy Gradient (DDiffPG), a novel actor-critic algorithm that learns from scratch multimodal policies parameterized as diffusion models while discovering and maintaining versatile behaviors. DDiffPG explores and discovers multiple modes through off-the-shelf unsupervised clustering combined with novelty-based intrinsic motivation. DDiffPG forms a multimodal training batch and utilizes mode-specific Q-learning to mitigate the inherent greediness of the RL objective, ensuring the improvement of the diffusion policy across all modes. Our approach further allows the policy to be conditioned on mode-specific embeddings to explicitly control the learned modes. Empirical studies validate DDiffPG’s capability to master multimodal behaviors in complex, high-dimensional continuous control tasks with sparse rewards, also showcasing proof-of-concept dynamic online replanning when navigating mazes with unseen obstacles.
             </p>
         </div>
     </section>
