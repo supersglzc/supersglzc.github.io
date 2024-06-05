@@ -685,6 +685,22 @@ pre {
             
         
     </section> 
+
+    <section id="performance">
+        <hr>
+        <h2>Performance</h2>
+        <br>
+        <figure>
+            <a>
+                <img width="100%" src="materials/performance.png">
+            </a>
+            <p class="caption">
+                DDiffPG has comparable performance to the baselines on all eight tasks while acquiring multimodal behaviors. In the AntMaze tasks, the sample efficiency of DDiffPG, DIPO, TD3 and SAC are similar. DDiffPG generally demonstrates lower sample efficiency than baselines in tasks that pose significant exploration challenges — this is expected since our method strives to discover multiple solutions.
+            </p> <br>
+        </figure>   
+        <hr>
+
+    </section> 
     
     <section id="robust_noise">
         <hr>
@@ -704,7 +720,7 @@ pre {
                 <img width="100%" src="materials/analysis (1).png">
             </a>
             <p class="caption">
-                Given a collection of goal-reached trajectories, each consisting of a sequence of state-action pairs, we categorize them into clusters and consider each a behavior mode (each color represents a mode). In practice, we use an unsupervised hierarchical clustering approach with Dynamic Time Warping (DTW) measure.
+                We showcase that DDiffPG effectively overcomes local minima when learning a multimodal policy. The key intuition is that unlike other methods that explore the first solution and collapse into it, DDiffPG continuously explores and seeks different solutions, enabling it to escape suboptimal local minima.
             </p> <br>
         </figure>
         <figure>
@@ -726,9 +742,9 @@ pre {
             <a>
                 <img width="100%" src="materials/hyper-parameters.png">
             </a>
-            <!-- <p class="caption">
-                Six simulation benchmarks where we test HuGE and compare against baselines. <strong>Bandu</strong>, <strong>Block Stacking</strong>, <strong>Kitchen</strong>, and <strong>Pusher</strong>, are long-horizon manipulation tasks; <strong>Four rooms</strong> and <strong>Maze</strong> are 2D navigation tasks
-            </p> <br> -->
+            <p class="caption">
+                We investigate the impact of the number of diffusion steps, batch size, action gradient learning rate, and number of Updates-To-Data (UTD) ratio. These hyperparameters are of particular interest given the diffusion policy and our learning procedure.
+            </p> <br>
         </figure>   
         <hr>
 
