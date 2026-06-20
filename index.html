@@ -73,6 +73,10 @@
         span.highlight {
             background-color: #ffffd0;
         }
+
+        .toggle-heading {
+            cursor: pointer;
+        }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- https://fontawesome.com/cheatsheet -->
@@ -97,6 +101,13 @@
         var block = document.getElementById(blockId);
         block.style.display = 'none';
     }
+
+    function toggleOtherPublications() {
+        toggleblock('other-publications');
+        var icon = document.getElementById('other-publications-icon');
+        var block = document.getElementById('other-publications');
+        icon.className = (block.style.display === 'none') ? 'fas fa-chevron-right' : 'fas fa-chevron-down';
+    }
 </script>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -112,7 +123,7 @@
                                 <name>Zechu (Steven) Li </name>
                             </p>
                             <p>
-                                I am a PhD student at <a href="https://pearl-lab.com/" target="_blank">PEARL Lab</a> advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank">Georgia Chalvatzaki</a>. 
+                                I am a PhD student at <a href="https://pearl-lab.com/" target="_blank">PEARL Lab</a> advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank">Georgia Chalvatzaki</a> from Oct 2024. 
                                 My research interest lies in reinforcement learning, especially its applications (e.g., robotics, finance, and transportation) and high-performance and scalable systems.
                             </p>
                             <p>
@@ -157,6 +168,66 @@
                     <tr>
                         <td>
                             <heading>Selected Publications</heading> [* Equal contribution]
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td style="padding:20px;width:25%;vertical-align:middle">
+                            <a href="https://arxiv.org/abs/2606.08610" target="_blank">
+                                <img src="images/teaser_page-0001.jpg" alt="RLDC" width="100%" style="border-radius:5px">
+                            </a>
+                        </td>
+                        <td style="padding:20px;width:75%;vertical-align:middle">
+                            <papertitle>HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning
+                            </papertitle>
+                            <br>
+                            <strong>Zechu Li</strong>, 
+                            <a href="https://pearl-lab.com/people/yufeng-jin/">Yufeng Jin</a>, 
+                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu</a>, 
+                            <a href="https://puzeliu.github.io/">Puze Liu</a>,
+                            <a href="https://pearl-lab.com/vignesh-prasad/">Vignesh Prasad</a>, 
+                            <a href="https://www.caidas.uni-wuerzburg.de/rlcdm/team/carlo-deramo/">Carlo D'Eramo</a>, 
+                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
+                            <br>
+                            <em>arXiv</em>, 2026
+                            <br>
+                            <a href="https://arxiv.org/abs/2606.08610" target="_blank">paper</a> /
+                            <a href="" target="_blank">code</a>
+                            <p></p>
+                            <p>
+                                An agentic framework that automates the simulation-side workflow for robot reinforcement learning through harness engineering.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td style="padding:20px;width:25%;vertical-align:middle">
+                            <a href="https://arxiv.org/abs/2502.02316" target="_blank">
+                                <img src="images/iros.jpg" alt="RLDC" width="100%" style="border-radius:5px">
+                            </a>
+                        </td>
+                        <td style="padding:20px;width:75%;vertical-align:middle">
+                            <papertitle>Scalable Multi-Task Data Generation via Reinforcement Learning for Language-Conditioned Bimanual Dexterous Manipulation
+                            </papertitle>
+                            <br>
+                            <strong>Zechu Li</strong>, 
+                            <a href="https://pearl-lab.com/people/yufeng-jin/">Yufeng Jin</a>, 
+                            <a href="https://puzeliu.github.io/">Puze Liu</a>,
+                            <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters">Jan Peters</a>, 
+                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
+                            <br>
+                            <em>IROS</em>, 2026
+                            <br>
+                            <a href="" target="_blank">paper</a> /
+                            <a href="" target="_blank">website</a>
+                            <p></p>
+                            <p>
+                                An RL-based data-generation pipeline for language-conditioned bimanual arm-hand manipulation.
+                            </p>
                         </td>
                     </tr>
                 </table>
@@ -289,32 +360,6 @@
                     </tr>
                 </table>
 
-                <!-- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank">
-                                <img src="images/games-14-00041-g001.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Social Learning for Sequential Driving Dilemmas
-                            </papertitle>
-                            <br>
-                            Xu Chen, 
-                            <a href="https://sharondi-columbia.wixsite.com/ditectlab">Sharon (Xuan) Di</a>, 
-                            <strong>Zechu Li</strong>
-                            <br>
-                            <em>Games</em>, 2023
-                            <br>
-                            <a href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank">paper</a>
-                            <p></p>
-                            <p>
-                                Identified whether social dilemmas exist in AVs' sequential decision making to help policymakers and AV manufacturers better understand under what circumstances SDDs arise and how to design rewards.
-                            </p>
-                        </td>
-                    </tr>
-                </table> -->
-
                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
                     <tr>
                         <td style="padding:20px;width:25%;vertical-align:middle">
@@ -344,33 +389,6 @@
                     </tr>
                 </table>
 
-                <!-- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank">
-                                <img src="files/gradient.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Stationary Deep Reinforcement Learning with Quantum K-spin Hamiltonian Equation
-                            </papertitle>
-                            <br>
-                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu*</a>, 
-                            <strong>Zechu Li*</strong>, 
-                            Shixun Wu, 
-                            <a href="https://www.ee.columbia.edu/~wangx/">Xiaodong Wang</a>
-                            <br>
-                            <em>Workshop on Physics for Machine Learning, ICLR</em>, 2023
-                            <br>
-                            <a href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank">paper</a>
-                            <p></p>
-                            <p>
-                                Proposed a K-spin Hamiltonian regularization term (called H-term) to help a policy network converge to a high-quality local minima from a quantum perspective.
-                            </p>
-                        </td>
-                    </tr>
-                </table> -->
-
                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
                     <tr>
                         <td style="padding:20px;width:25%;vertical-align:middle">
@@ -397,7 +415,135 @@
                     </tr>
                 </table>
 
-                <!-- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td class="toggle-heading" onclick="toggleOtherPublications()">
+                            <heading><i class="fas fa-chevron-right" id="other-publications-icon"></i> Other Publications</heading>
+                        </td>
+                    </tr>
+                </table>
+                <div id="other-publications" style="display:none">
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td style="padding:20px;width:25%;vertical-align:middle">
+                            <a href="https://arxiv.org/abs/2605.11665v1" target="_blank">
+                                <img src="images/nautilus.png" alt="Nautilus" width="100%" style="border-radius:5px">
+                            </a>
+                        </td>
+                        <td style="padding:20px;width:75%;vertical-align:middle">
+                            <papertitle>Nautilus: From One Prompt to Plug-and-Play Robot Learning
+                            </papertitle>
+                            <br>
+                            <a href="https://pearl-lab.com/people/yufeng-jin/">Yufeng Jin*</a>, 
+                            <a href="https://ventusff.github.io/">Jianfei Guo*</a>, 
+                            <a href="https://xiaogangjia.github.io/Personal_Website/">Xiaogang Jia</a>, 
+                            <a href="https://yudeng321.github.io/">Yu Deng</a>, 
+                            <strong>Zechu Li</strong>, 
+                            <a href="https://www.linkedin.com/in/han-liu-697a442aa/">Han Liu</a>, 
+                            Weiran Liao, 
+                            <a href="https://pearl-lab.com/vignesh-prasad/">Vignesh Prasad</a>, 
+                            <a href="https://www.linkedin.com/in/mathias-franzius-86b17b2b4/">Mathias Franzius</a>, 
+                            <a href="https://alr.iar.kit.edu/21_65.php">Gerhard Neumann</a>, 
+                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
+                            <br>
+                            <em>arXiv</em>, 2026
+                            <br>
+                            <a href="https://arxiv.org/abs/2605.11665v1" target="_blank">paper</a> /
+                            <a href="https://yufengjin.github.io/projects/nautilus/" target="_blank">website</a>
+                            <p></p>
+                            <p>
+                                An open-source agentic harness that turns a single natural-language prompt into ready-to-use reproduction, evaluation, fine-tuning, and deployment workflows for robot learning research.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td style="padding:20px;width:25%;vertical-align:middle">
+                            <a href="https://arxiv.org/abs/2511.01501" target="_blank">
+                                <img src="images/se3poseflow.webp" alt="SE3-PoseFlow" width="100%" style="border-radius:5px">
+                            </a>
+                        </td>
+                        <td style="padding:20px;width:75%;vertical-align:middle">
+                            <papertitle>SE(3)-PoseFlow: Estimating 6D Pose Distributions for Uncertainty-Aware Robotic Manipulation
+                            </papertitle>
+                            <br>
+                            <a href="https://pearl-lab.com/people/yufeng-jin/">Yufeng Jin</a>, 
+                            <a href="https://niklasfunk.com/">Niklas Funk</a>, 
+                            <a href="https://pearl-lab.com/vignesh-prasad/">Vignesh Prasad</a>, 
+                            <strong>Zechu Li</strong>, 
+                            <a href="https://www.linkedin.com/in/mathias-franzius-86b17b2b4/">Mathias Franzius</a>, 
+                            <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters">Jan Peters</a>, 
+                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
+                            <br>
+                            <em>ICRA</em>, 2026
+                            <br>
+                            <a href="https://arxiv.org/abs/2511.01501" target="_blank">paper</a> /
+                            <a href="https://yufengjin.github.io/projects/se3-poseflow/" target="_blank">website</a>
+                            <p></p>
+                            <p>
+                                A probabilistic framework that leverages flow matching on the SE(3) manifold to estimate full 6D object pose distributions, enabling uncertainty-aware robotic manipulation under partial observability, occlusions, and symmetries.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td style="padding:20px;width:25%;vertical-align:middle">
+                            <a href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank">
+                                <img src="images/games-14-00041-g001.png" alt="sym" width="100%" style="border-radius:5px">
+                            </a>
+                        </td>
+                        <td style="padding:20px;width:75%;vertical-align:middle">
+                            <papertitle>Social Learning for Sequential Driving Dilemmas
+                            </papertitle>
+                            <br>
+                            Xu Chen, 
+                            <a href="https://sharondi-columbia.wixsite.com/ditectlab">Sharon (Xuan) Di</a>, 
+                            <strong>Zechu Li</strong>
+                            <br>
+                            <em>Games</em>, 2023
+                            <br>
+                            <a href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank">paper</a>
+                            <p></p>
+                            <p>
+                                Identified whether social dilemmas exist in AVs' sequential decision making to help policymakers and AV manufacturers better understand under what circumstances SDDs arise and how to design rewards.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td style="padding:20px;width:25%;vertical-align:middle">
+                            <a href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank">
+                                <img src="files/gradient.png" alt="sym" width="100%" style="border-radius:5px">
+                            </a>
+                        </td>
+                        <td style="padding:20px;width:75%;vertical-align:middle">
+                            <papertitle>Stationary Deep Reinforcement Learning with Quantum K-spin Hamiltonian Equation
+                            </papertitle>
+                            <br>
+                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu*</a>, 
+                            <strong>Zechu Li*</strong>, 
+                            Shixun Wu, 
+                            <a href="https://www.ee.columbia.edu/~wangx/">Xiaodong Wang</a>
+                            <br>
+                            <em>Workshop on Physics for Machine Learning, ICLR</em>, 2023
+                            <br>
+                            <a href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank">paper</a>
+                            <p></p>
+                            <p>
+                                Proposed a K-spin Hamiltonian regularization term (called H-term) to help a policy network converge to a high-quality local minima from a quantum perspective.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
                     <tr>
                         <td style="padding:20px;width:25%;vertical-align:middle">
                             <a href="https://ieeexplore.ieee.org/document/9827289" target="_blank">
@@ -422,69 +568,71 @@
                             </p>
                         </td>
                     </tr>
-                </table> -->
-                
-                <!-- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                <tr>
-                    <td style="padding:20px;width:25%;vertical-align:middle">
-                        <a href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank">
-                            <img src="images/finrl_podracer.png" alt="sym" width="100%" style="border-radius:5px">
-                        </a>
-                    </td>
-                    <td style="padding:20px;width:75%;vertical-align:middle">
-                        <papertitle>FinRL-Podracer: High Performance and Scalable Deep Reinforcement Learning for Quantitative Finance
-                        </papertitle>
-                        <br>
-                        <strong>Zechu Li</strong>, 
-                        <a href="http://www.tensorlet.org/">Xiao-Yang Liu</a>, 
-                        Jiahao Zheng, 
-                        <a href="https://zhaoranwang.github.io/">Zhaoran Wang</a>, 
-                        <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en">Anwar Walid</a>, 
-                        <a href="https://idea.edu.cn/person/guojian/">Jian Guo</a>
-                        <br>
-                        <em>ACM International Conference on AI in Finance (ICAIF)</em>, 2021
-                        <br>
-                        <a href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank">paper</a> /
-                        <a href="https://github.com/AI4Finance-Foundation/FinRL_Podracer">code</a>
-                        <p></p>
-                        <p>
-                            A framework to accelerate the development pipeline of RL-driven trading strategy and show the high scalability by training a trading agent in 10 minutes with 80 A100 GPUs, on NASDAQ-100 constituent stocks with minute-level data over 10 years.
-                        </p>
-                    </td>
-                </tr>
-            </table> -->
+                </table>
 
-                <!-- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                  <tr>
-                      <td style="padding:20px;width:25%;vertical-align:middle">
-                          <a href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank">
-                              <img src="images/erl_podracer.png" alt="sym" width="100%" style="border-radius:5px">
-                          </a>
-                      </td>
-                      <td style="padding:20px;width:75%;vertical-align:middle">
-                          <papertitle>ElegantRL-Podracer: Scalable and Elastic Library for Cloud-native Deep Reinforcement Learning
-                          </papertitle>
-                          <br>
-                          <a href="http://www.tensorlet.org/">Xiao-Yang Liu*</a>, 
-                          <strong>Zechu Li*</strong>, 
-                          <a href="https://www.princeton.edu/~zy6/">Zhuoran Yang</a>, 
-                          Jiahao Zheng, 
-                          <a href="https://zhaoranwang.github.io/">Zhaoran Wang</a>, 
-                          <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en">Anwar Walid</a>, 
-                          <a href="https://idea.edu.cn/person/guojian/">Jian Guo</a>, 
-                          <a href="http://people.eecs.berkeley.edu/~jordan/">Michael Jordan</a>
-                          <br>
-                          <em>Deep Reinforcement Learning Workshop, NeurIPS</em>, 2021
-                          <br>
-                          <a href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank">paper</a> /
-                          <a href="https://github.com/AI4Finance-Foundation/ElegantRL">code</a>
-                          <p></p>
-                          <p>
-                            A scalable and elastic library ElegantRL-podracer for cloud-native deep reinforcement learning, which efficiently supports millions of GPU cores to carry out massively parallel training at multiple levels. 
-                          </p>
-                      </td>
-                  </tr>
-              </table> -->
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td style="padding:20px;width:25%;vertical-align:middle">
+                            <a href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank">
+                                <img src="images/finrl_podracer.png" alt="sym" width="100%" style="border-radius:5px">
+                            </a>
+                        </td>
+                        <td style="padding:20px;width:75%;vertical-align:middle">
+                            <papertitle>FinRL-Podracer: High Performance and Scalable Deep Reinforcement Learning for Quantitative Finance
+                            </papertitle>
+                            <br>
+                            <strong>Zechu Li</strong>, 
+                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu</a>, 
+                            Jiahao Zheng, 
+                            <a href="https://zhaoranwang.github.io/">Zhaoran Wang</a>, 
+                            <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en">Anwar Walid</a>, 
+                            <a href="https://idea.edu.cn/person/guojian/">Jian Guo</a>
+                            <br>
+                            <em>ACM International Conference on AI in Finance (ICAIF)</em>, 2021
+                            <br>
+                            <a href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank">paper</a> /
+                            <a href="https://github.com/AI4Finance-Foundation/FinRL_Podracer">code</a>
+                            <p></p>
+                            <p>
+                                A framework to accelerate the development pipeline of RL-driven trading strategy and show the high scalability by training a trading agent in 10 minutes with 80 A100 GPUs, on NASDAQ-100 constituent stocks with minute-level data over 10 years.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+                    <tr>
+                        <td style="padding:20px;width:25%;vertical-align:middle">
+                            <a href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank">
+                                <img src="images/erl_podracer.png" alt="sym" width="100%" style="border-radius:5px">
+                            </a>
+                        </td>
+                        <td style="padding:20px;width:75%;vertical-align:middle">
+                            <papertitle>ElegantRL-Podracer: Scalable and Elastic Library for Cloud-native Deep Reinforcement Learning
+                            </papertitle>
+                            <br>
+                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu*</a>, 
+                            <strong>Zechu Li*</strong>, 
+                            <a href="https://www.princeton.edu/~zy6/">Zhuoran Yang</a>, 
+                            Jiahao Zheng, 
+                            <a href="https://zhaoranwang.github.io/">Zhaoran Wang</a>, 
+                            <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en">Anwar Walid</a>, 
+                            <a href="https://idea.edu.cn/person/guojian/">Jian Guo</a>, 
+                            <a href="http://people.eecs.berkeley.edu/~jordan/">Michael Jordan</a>
+                            <br>
+                            <em>Deep Reinforcement Learning Workshop, NeurIPS</em>, 2021
+                            <br>
+                            <a href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank">paper</a> /
+                            <a href="https://github.com/AI4Finance-Foundation/ElegantRL">code</a>
+                            <p></p>
+                            <p>
+                                A scalable and elastic library ElegantRL-podracer for cloud-native deep reinforcement learning, which efficiently supports millions of GPU cores to carry out massively parallel training at multiple levels. 
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                </div>
 
                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
                   <tr>
