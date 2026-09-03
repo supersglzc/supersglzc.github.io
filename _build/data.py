@@ -107,7 +107,9 @@ SELECTED = [
         "venue": "arXiv", "year": "2026",
         "media": ("img", "images/harbor_demo.webp"),   # animated WebP: autoplays + loops on its own
         "href": "https://arxiv.org/abs/2606.08610",
-        "links": [("paper", "https://arxiv.org/abs/2606.08610"), ("code", "")],
+        "links": [("paper", "https://arxiv.org/abs/2606.08610"),
+                  ("website", "https://supersglzc.github.io/harbor-rl/"),
+                  ("code", "https://github.com/supersglzc/harbor-rl")],
         "desc": "Automates the end-to-end robot RL workflow, from package installation to policy tuning.",
     },
     {
