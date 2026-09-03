@@ -10,6 +10,8 @@ PROFILE = {
     "first": "Zechu",
     "last": "Li",
     "photo": "files/scholar_photo.jpg",   # pulled from the Google Scholar profile
+    "favicon": "files/favicon.png",       # same shot, circular crop with alpha corners
+    "favicon_sm": "files/favicon-32.png",
     "role": "PhD Student",
     "affil": "PEARL Lab, TU Darmstadt",
     "tagline": "Reinforcement learning &middot; Robotics &middot; Scalable systems",

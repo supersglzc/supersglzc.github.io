@@ -124,7 +124,8 @@ def page(css, body, base, fonts="", extra_head="", theme="#ffffff", icons=False,
 <meta name="theme-color" content="%(theme)s">
 <title>%(name)s</title>
 <meta name="description" content="Zechu (Steven) Li — PhD student at PEARL Lab. Reinforcement learning, robotics, and scalable systems.">
-<link rel="icon" href="%(base)s%(photo)s">
+<link rel="icon" type="image/png" sizes="32x32" href="%(base)s%(fav_sm)s">
+<link rel="icon" type="image/png" sizes="256x256" href="%(base)s%(fav)s">
 %(fonts)s
 %(icons)s
 %(extra)s
@@ -140,7 +141,8 @@ def page(css, body, base, fonts="", extra_head="", theme="#ffffff", icons=False,
         "theme": theme,
         "name": PROFILE["name"],
         "base": base,
-        "photo": PROFILE["photo"],
+        "fav": PROFILE["favicon"],
+        "fav_sm": PROFILE["favicon_sm"],
         "fonts": fonts,
         "icons": FA if icons else "",
         "extra": extra_head,
