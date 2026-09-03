@@ -1,776 +1,466 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
-    <style type="text/css">
-        /* Color scheme stolen from Sergey Karayev */
-        
-        a {
-            color: #1772d0;
-            text-decoration: none;
-        }
-        
-        a:focus,
-        a:hover {
-            color: #f09228;
-            text-decoration: none;
-        }
-        
-        body,
-        td,
-        th,
-        tr,
-        p,
-        a {
-            font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 15px
-        }
-        
-        strong {
-            font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 15px;
-        }
-        
-        heading {
-            font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 24px;
-        }
-        
-        papertitle {
-            font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 15px;
-            font-weight: 700
-        }
-        
-        name {
-            font-family: 'Lato', Verdana, Helvetica, sans-serif;
-            font-size: 32px;
-        }
-        
-        .one {
-            width: 160px;
-            height: 160px;
-            position: relative;
-        }
-        
-        .two {
-            width: 160px;
-            height: 160px;
-            position: absolute;
-            transition: opacity .2s ease-in-out;
-            -moz-transition: opacity .2s ease-in-out;
-            -webkit-transition: opacity .2s ease-in-out;
-        }
-        
-        .fade {
-            transition: opacity .2s ease-in-out;
-            -moz-transition: opacity .2s ease-in-out;
-            -webkit-transition: opacity .2s ease-in-out;
-        }
-        
-        span.highlight {
-            background-color: #ffffd0;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fbfbfc">
+<title>Zechu (Steven) Li</title>
+<meta name="description" content="Zechu (Steven) Li — PhD student at PEARL Lab. Reinforcement learning, robotics, and scalable systems.">
+<link rel="icon" href="files/scholar_photo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-        .toggle-heading {
-            cursor: pointer;
-        }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- https://fontawesome.com/cheatsheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
-    <link rel="icon" type="image/png" href="files/WechatIMG18.jpg">
-    <title>Zechu (Steven) Li</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img,video{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+ul{padding:0;list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+details summary::-webkit-details-marker{display:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+:root{
+  --bg:#fbfbfc; --paper:#fff; --ink:#131519; --dim:#5d626c; --dim2:#9ba0aa;
+  --line:#e6e7ea; --acc:#5b3df5; --acc2:#e0397a;
+  --yrw:92px;       /* column 1: the year label   */
+  --railw:52px;     /* column 2: the timeline rail */
+  --indent:144px;   /* = yrw + railw: everything outside the timeline lines
+                       up with the cards, leaving the rail its own margin */
+}
+body{background:var(--bg);color:var(--ink);font:400 15.5px/1.68 "Manrope",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{text-decoration:none}
+.wrap{max-width:1060px;margin:0 auto;padding:0 26px 100px}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- header ---------- */
+header,.bio,.sec{margin-left:var(--indent)}
+header{padding:76px 0 0;display:grid;grid-template-columns:1fr 212px;gap:44px;align-items:center}
+.pf{width:196px;height:196px;object-fit:cover;border-radius:50%;background:var(--paper);
+  border:5px solid var(--paper);box-shadow:0 10px 34px -14px rgba(19,21,25,.32);margin-left:auto}
+h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-height:1.05}
+.social{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.social a{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
+  border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 14px;
+  transition:border-color .18s,color .18s,transform .18s}
+.social a:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
+.social i{color:var(--dim2);font-size:12.5px}
+.social a:hover i{color:var(--acc)}
+.bio{margin-top:34px;display:grid;gap:14px;max-width:72ch;color:#3a3f48}
+.bio a{color:var(--acc);border-bottom:1px solid rgba(91,61,245,.25);font-weight:600}
+.bio a:hover{color:var(--acc2);border-color:var(--acc2)}
+
+/* ---------- section headings ---------- */
+.sec{margin:74px 0 30px var(--indent);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sec h2{font-size:19px;font-weight:800;letter-spacing:-.028em}
+.sec .ln{flex:1;height:1px;background:var(--line);min-width:20px}
+.sec .cnt{font-size:12px;font-weight:700;color:var(--dim2);letter-spacing:.06em}
+.note{font-size:11.5px;color:var(--dim2);margin:-22px 0 26px var(--indent);letter-spacing:.02em}
+
+/* ---------- per-year expander ---------- */
+.more{position:relative}
+.more>summary{list-style:none;cursor:pointer;position:relative;padding-bottom:22px;
+  display:flex;align-items:center}
+.more>summary::before{content:"";position:absolute;left:calc(-1 * var(--railw)/2 - 5px);top:11px;
+  width:10px;height:10px;border-radius:50%;background:var(--bg);
+  border:2px solid var(--line);z-index:1;transition:border-color .18s,background .18s}
+.more>summary:hover::before{border-color:var(--acc)}
+.more[open]>summary::before{background:var(--acc);border-color:var(--acc)}
+.moreu{display:inline-flex;align-items:center;gap:8px;background:var(--paper);
+  border:1px dashed #d3d5da;border-radius:999px;padding:7px 15px;
+  font-size:12.5px;font-weight:700;letter-spacing:.01em;color:var(--dim2);
+  transition:border-color .18s,color .18s,border-style .18s,box-shadow .18s}
+.more>summary:hover .moreu{border-style:solid;border-color:var(--acc);color:var(--acc);
+  box-shadow:0 6px 18px -14px rgba(91,61,245,.7)}
+.more[open]>summary .moreu{border-style:solid}
+.moreu .chev{font-size:9px;transition:transform .2s}
+.more[open]>summary .moreu .chev{transform:rotate(180deg)}
+.more>summary:focus-visible .moreu{outline:2px solid var(--acc);outline-offset:3px}
+.more .lbl-open{display:none}
+.more[open] .lbl-shut{display:none}
+.more[open] .lbl-open{display:inline}
+
+/* ---------- timeline ---------- */
+.tl{position:relative}
+.tl::before{content:"";position:absolute;left:calc(var(--yrw) + var(--railw)/2 - 1px);
+  top:12px;bottom:26px;width:2px;
+  background:linear-gradient(180deg,var(--acc),rgba(91,61,245,.18) 68%,transparent)}
+.grp{display:grid;grid-template-columns:var(--yrw) var(--railw) minmax(0,1fr);align-items:start}
+.grp.only .yr{padding-top:5px}
+.yr{grid-column:1;padding-top:19px;text-align:right;
+  font-size:21px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+.yr small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;
+  color:var(--dim2);text-transform:uppercase;margin-top:3px}
+.cards{grid-column:3;min-width:0}
+.node{position:relative;padding-bottom:22px}
+.node::before{content:"";position:absolute;left:calc(-1 * var(--railw)/2 - 6px);top:24px;
+  width:12px;height:12px;
+  border-radius:50%;background:var(--acc);border:2.5px solid var(--acc);z-index:1;
+  transition:box-shadow .18s}
+.node.alt::before{background:var(--paper);border-color:var(--dim2)}
+.node:hover::before{background:var(--acc);border-color:var(--acc);
+  box-shadow:0 0 0 5px rgba(91,61,245,.14)}
+
+.card{display:grid;grid-template-columns:262px 1fr;gap:24px;align-items:start;
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;
+  transition:box-shadow .22s,border-color .22s,transform .22s}
+.card:hover{border-color:#d8d9de;box-shadow:0 14px 34px -22px rgba(19,21,25,.34);transform:translateY(-2px)}
+.fig{align-self:center;display:block;overflow:hidden;background:var(--paper);border-radius:10px}
+.thumb{display:block;width:100%;height:auto;max-height:250px;object-fit:contain;margin:0 auto}
+.vbadge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--acc);background:rgba(91,61,245,.08);border-radius:6px;padding:5px 9px}
+.node.alt .vbadge{color:var(--dim);background:#f1f1f4}
+.ttl{font-size:17px;font-weight:750;line-height:1.3;letter-spacing:-.022em;margin:10px 0 7px}
+.ttl a:hover{color:var(--acc)}
+.authors{font-size:13px;color:var(--dim);line-height:1.6}
+.authors a{font-weight:600}
+.authors a:hover{color:var(--acc)}
+.me{color:var(--ink);font-weight:800}
+.desc{font-size:13.8px;color:#4b505a;margin-top:9px}
+.lnks{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.lnk{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--acc);
+  border:1px solid rgba(91,61,245,.24);border-radius:999px;padding:6px 12px}
+.lnk:hover{background:var(--acc);color:#fff;border-color:var(--acc)}
+.lnk.off{color:var(--dim2);border-color:var(--line);border-style:dashed;pointer-events:none}
+.sep{display:none}
+
+/* ---------- open-source extras ---------- */
+.pi{font-size:13.5px;color:#4b505a;margin-top:11px;font-weight:600}
+.plist{margin-top:7px;display:grid;gap:7px;font-size:13.2px;color:#4b505a}
+.plist li{padding-left:15px;position:relative}
+.plist li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;
+  border-radius:50%;background:var(--acc2)}
+.plist a{color:var(--acc);font-weight:600}
+.plist a:hover{color:var(--acc2)}
+.cite{display:block;font-size:11.8px;color:var(--dim2);font-weight:400}
+
+
+@media (max-width:960px){
+  :root{--yrw:70px;--railw:42px;--indent:112px}
+  .card{grid-template-columns:216px 1fr;gap:20px}
+  .yr{font-size:19px}
+}
+@media (max-width:820px){
+  :root{--indent:0px}
+  header{grid-template-columns:1fr;gap:22px}
+  .pf{width:132px;height:132px;order:-1;border-width:4px;margin-left:0}
+  .tl::before{left:5px;top:8px}
+  .grp{grid-template-columns:minmax(0,1fr)}
+  .yr{grid-column:1;padding:0 0 12px 28px;text-align:left;font-size:18px;
+    display:flex;align-items:baseline;gap:9px}
+  .yr small{margin:0}
+  .cards{grid-column:1}
+  .node{padding-left:28px}
+  .node::before{left:0;top:24px}
+  .card{grid-template-columns:1fr;gap:14px}
+  .fig{max-width:360px;width:100%}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px 80px}
+  header{padding-top:44px}
+  .sec{gap:10px}
+  .sec .ln{display:none}
+}
+</style>
 </head>
-<script>
-    function toggleblock(blockId) {
-        var block = document.getElementById(blockId);
-        if (block.style.display == 'none') {
-            block.style.display = 'block';
-        } else {
-            block.style.display = 'none';
-        }
-    }
-
-    function hideblock(blockId) {
-        var block = document.getElementById(blockId);
-        block.style.display = 'none';
-    }
-
-    function toggleOtherPublications() {
-        toggleblock('other-publications');
-        var icon = document.getElementById('other-publications-icon');
-        var block = document.getElementById('other-publications');
-        icon.className = (block.style.display === 'none') ? 'fas fa-chevron-right' : 'fas fa-chevron-down';
-    }
-</script>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
 <body>
-    <table width="1000" border="0" align="center" cellspacing="0" cellpadding="0">
-        <tr>
-            <td>
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td width="67%" valign="middle">
-                            <p align="center">
-                                <name>Zechu (Steven) Li </name>
-                            </p>
-                            <p>
-                                I am a PhD student at <a href="https://pearl-lab.com/" target="_blank">PEARL Lab</a> advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank">Georgia Chalvatzaki</a> from Oct 2024. 
-                                My research interest lies in reinforcement learning, especially its applications (e.g., robotics, finance, and transportation) and high-performance and scalable systems.
-                            </p>
-                            <p>
-                                Prior to this, I was a visiting researcher at <a href="https://www.csail.mit.edu/" target="_blank">MIT CSAIL</a>, advised by Prof. <a href="http://people.csail.mit.edu/pulkitag/" target="_blank">Pulkit Agrawal</a>,
-                                where I conducted research on massively parallel simulation and sim-to-real in robotics. 
-                            </p>
-                            <p>
-                                I received my bachelor's degree from <a href="https://www.columbia.edu/" target="_blank">Columbia University</a> in May 2022, majoring in <b>computer science</b>.
-                                During my undergraduate studies, I was fortunate to work with Prof. <a href="https://www.ee.columbia.edu/~wangx/">Xiaodong Wang</a>, Prof. <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en">Anwar Walid</a> and Prof.
-                                <a href="https://sharondi-columbia.wixsite.com/ditectlab">Sharon (Xuan) Di</a>.
-                            </p>
-                           
-                            <p align=center>
-                                <div style="display: flex; align-items: center; gap: 4px;">
-                                    <a href="https://twitter.com/softraeh?ref_src=twsrc%5Etfw" 
-                                       class="twitter-follow-button" 
-                                       data-show-count="false">Follow @softraeh</a>&nbsp/&nbsp
-                                       <a href="mailto:zl2993@columbia.edu">Email</a> &nbsp/&nbsp
-                                        <!-- <a href="files/Steven_Li_Resume.pdf" target="_blank">CV</a> &nbsp/&nbsp -->
-                                        <a href="https://scholar.google.com/citations?user=FI_6by0AAAAJ&hl=en" target="_blank">Google Scholar</a> &nbsp/&nbsp
-                                        <a href="https://github.com/supersglzc" target="_blank">GitHub</a>&nbsp/&nbsp
-                                        <a href="https://www.linkedin.com/in/zechu-li-66a7741b3/" target="_blank">LinkedIn</a>
-                                  </div>
-                                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                            </p>
-                        </td>
-                        <td width="33%">
-                            <img src="files/WechatIMG18.jpg" style="display:block;" width="100%">
-                        </td>
-                    </tr>
-                </table>
 
-                <!-- <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td>
-                            <heading>Pre-Prints</heading>
-                        </td>
-                    </tr>
-                </table> -->
+<div class="wrap">
+<header>
+  <div>
+    <h1>Zechu (Steven) Li</h1>
+    <nav class="social"><a class="" href="mailto:zl2993@columbia.edu"><i class="far fa-envelope" aria-hidden="true"></i> Email</a><a class="" href="https://scholar.google.com/citations?user=FI_6by0AAAAJ&hl=en" target="_blank" rel="noopener"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a><a class="" href="https://github.com/supersglzc" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a><a class="" href="https://x.com/softraeh" target="_blank" rel="noopener"><i class="fab fa-x-twitter" aria-hidden="true"></i> X</a><a class="" href="https://www.linkedin.com/in/zechu-li-66a7741b3/" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></nav>
+  </div>
+  <img class="pf" src="files/scholar_photo.jpg" alt="Zechu (Steven) Li" width="256" height="256">
+</header>
+<div class="bio"><p class="bio-p">I am a PhD student at <a href="https://pearl-lab.com/" target="_blank" rel="noopener">PEARL Lab</a> advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a> from Oct 2024. My research interest lies in reinforcement learning, especially its applications (e.g., robotics, finance, and transportation) and high-performance and scalable systems.</p>
+<p class="bio-p">Prior to this, I was a visiting researcher at <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">MIT CSAIL</a>, advised by Prof. <a href="http://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a>, where I conducted research on massively parallel simulation and sim-to-real in robotics.</p>
+<p class="bio-p">I received my bachelor&rsquo;s degree from <a href="https://www.columbia.edu/" target="_blank" rel="noopener">Columbia University</a> in May 2022, majoring in <b>computer science</b>. During my undergraduate studies, I was fortunate to work with Prof. <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a>, Prof. <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&amp;hl=en" target="_blank" rel="noopener">Anwar Walid</a> and Prof. <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a>.</p></div>
 
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td>
-                            <heading>Selected Publications</heading> [* Equal contribution]
-                        </td>
-                    </tr>
-                </table>
+<main>
+  <div class="sec"><h2>Publications</h2><span class="ln"></span><span class="cnt">15</span></div>
+  <p class="note">* equal contribution</p>
+  <div class="tl">
+<div class="grp"><div class="yr">2026<small>4 papers</small></div><div class="cards">
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://arxiv.org/abs/2606.08610" target="_blank" rel="noopener"><img class="thumb" src="images/harbor_demo.webp" alt="HARBOR" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">arXiv 2026</span>
+      <h3 class="ttl"><a href="https://arxiv.org/abs/2606.08610" target="_blank" rel="noopener">HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning</a></h3>
+      <p class="authors"><span class="me">Zechu Li</span>, <a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin</a>, <a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu</a>, <a href="https://puzeliu.github.io/" target="_blank" rel="noopener">Puze Liu</a>, <a href="https://pearl-lab.com/vignesh-prasad/" target="_blank" rel="noopener">Vignesh Prasad</a>, <a href="https://www.caidas.uni-wuerzburg.de/rlcdm/team/carlo-deramo/" target="_blank" rel="noopener">Carlo D'Eramo</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <p class="desc">An agentic framework that formulates the robot RL automation as a harness engineering problem and automates end-to-end simulation workflow from package installation to policy tuning.</p>
+      <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2606.08610" target="_blank" rel="noopener">paper</a><span class="lnk off" title="coming soon">code</span></div>
+      
+    </div>
+  </article>
+</div>
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://arxiv.org/abs/2606.22471" target="_blank" rel="noopener"><img class="thumb" src="images/iros.jpg" alt="Scalable Multi-Task Data Generation via Reinforcement Learning for Language-Conditioned Bimanual Dexterous Manipulation" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">IROS 2026</span>
+      <h3 class="ttl"><a href="https://arxiv.org/abs/2606.22471" target="_blank" rel="noopener">Scalable Multi-Task Data Generation via Reinforcement Learning for Language-Conditioned Bimanual Dexterous Manipulation</a></h3>
+      <p class="authors"><span class="me">Zechu Li</span>, <a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin</a>, <a href="https://puzeliu.github.io/" target="_blank" rel="noopener">Puze Liu</a>, <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters" target="_blank" rel="noopener">Jan Peters</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <p class="desc">An RL-based data-generation pipeline for language-conditioned bimanual arm-hand manipulation.</p>
+      <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2606.22471" target="_blank" rel="noopener">paper</a></div>
+      
+    </div>
+  </article>
+</div><details class="more"><summary><span class="moreu"><span class="lbl-shut">2 more from 2026</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+<div class="node alt">
+  <article class="card">
+    <a class="fig" href="https://arxiv.org/abs/2605.11665v1" target="_blank" rel="noopener"><img class="thumb" src="images/nautilus.png" alt="Nautilus" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">arXiv 2026</span>
+      <h3 class="ttl"><a href="https://arxiv.org/abs/2605.11665v1" target="_blank" rel="noopener">Nautilus: From One Prompt to Plug-and-Play Robot Learning</a></h3>
+      <p class="authors"><a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin*</a>, <a href="https://ventusff.github.io/" target="_blank" rel="noopener">Jianfei Guo*</a>, <a href="https://xiaogangjia.github.io/Personal_Website/" target="_blank" rel="noopener">Xiaogang Jia</a>, <a href="https://yudeng321.github.io/" target="_blank" rel="noopener">Yu Deng</a>, <span class="me">Zechu Li</span>, <a href="https://www.linkedin.com/in/han-liu-697a442aa/" target="_blank" rel="noopener">Han Liu</a>, <span class="au">Weiran Liao</span>, <a href="https://pearl-lab.com/vignesh-prasad/" target="_blank" rel="noopener">Vignesh Prasad</a>, <a href="https://www.linkedin.com/in/mathias-franzius-86b17b2b4/" target="_blank" rel="noopener">Mathias Franzius</a>, <a href="https://alr.iar.kit.edu/21_65.php" target="_blank" rel="noopener">Gerhard Neumann</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <p class="desc">An open-source agentic harness that turns a single natural-language prompt into ready-to-use reproduction, evaluation, fine-tuning, and deployment workflows for robot learning research.</p>
+      <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2605.11665v1" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://yufengjin.github.io/projects/nautilus/" target="_blank" rel="noopener">website</a></div>
+      
+    </div>
+  </article>
+</div>
+<div class="node alt">
+  <article class="card">
+    <a class="fig" href="https://arxiv.org/abs/2511.01501" target="_blank" rel="noopener"><img class="thumb" src="images/se3poseflow.webp" alt="SE(3)-PoseFlow" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">ICRA 2026</span>
+      <h3 class="ttl"><a href="https://arxiv.org/abs/2511.01501" target="_blank" rel="noopener">SE(3)-PoseFlow: Estimating 6D Pose Distributions for Uncertainty-Aware Robotic Manipulation</a></h3>
+      <p class="authors"><a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin</a>, <a href="https://niklasfunk.com/" target="_blank" rel="noopener">Niklas Funk</a>, <a href="https://pearl-lab.com/vignesh-prasad/" target="_blank" rel="noopener">Vignesh Prasad</a>, <span class="me">Zechu Li</span>, <a href="https://www.linkedin.com/in/mathias-franzius-86b17b2b4/" target="_blank" rel="noopener">Mathias Franzius</a>, <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters" target="_blank" rel="noopener">Jan Peters</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <p class="desc">A probabilistic framework that leverages flow matching on the SE(3) manifold to estimate full 6D object pose distributions, enabling uncertainty-aware robotic manipulation under partial observability, occlusions, and symmetries.</p>
+      <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2511.01501" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://yufengjin.github.io/projects/se3-poseflow/" target="_blank" rel="noopener">website</a></div>
+      
+    </div>
+  </article>
+</div></details></div></div>
+<div class="grp"><div class="yr">2025<small>2 papers</small></div><div class="cards">
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://arxiv.org/abs/2505.05287" target="_blank" rel="noopener"><video class="thumb" src="images/symdex.mp4" autoplay muted loop playsinline preload="metadata"></video></a>
+    <div>
+      <span class="vbadge">CoRL 2025</span>
+      <h3 class="ttl"><a href="https://arxiv.org/abs/2505.05287" target="_blank" rel="noopener">Morphologically Symmetric Reinforcement Learning for Ambidextrous Bimanual Manipulation</a></h3>
+      <p class="authors"><span class="me">Zechu Li</span>, <a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin</a>, <a href="https://daniel-ordonez-apraez.netlify.app/" target="_blank" rel="noopener">Daniel Ordoñez Apraez</a>, <a href="https://www.iit.it/people-details/-/people/claudio-semini" target="_blank" rel="noopener">Claudio Semini</a>, <a href="https://puzeliu.github.io/" target="_blank" rel="noopener">Puze Liu</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <p class="desc">A novel RL framework that explicitly leverages the inherent morphological symmetry in bimanual robotic systems to enable ambidextrous control.</p>
+      <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2505.05287" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://supersglzc.github.io/projects/symdex/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/supersglzc/symdex" target="_blank" rel="noopener">code</a></div>
+      
+    </div>
+  </article>
+</div>
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://arxiv.org/abs/2502.02316" target="_blank" rel="noopener"><img class="thumb" src="images/DIME.png" alt="DIME" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">ICML 2025</span>
+      <h3 class="ttl"><a href="https://arxiv.org/abs/2502.02316" target="_blank" rel="noopener">DIME: Diffusion-Based Maximum Entropy Reinforcement Learning</a></h3>
+      <p class="authors"><a href="https://onur4229.github.io/" target="_blank" rel="noopener">Onur Celik</a>, <span class="me">Zechu Li</span>, <a href="https://denisbless.github.io/" target="_blank" rel="noopener">Denis Blessing</a>, <a href="https://brucegeli.github.io/" target="_blank" rel="noopener">Ge Li</a>, <a href="https://www.ias.informatik.tu-darmstadt.de/Team/DanielPalenicek" target="_blank" rel="noopener">Daniel Palenicek</a>, <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters" target="_blank" rel="noopener">Jan Peters</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a>, <a href="https://alr.iar.kit.edu/21_65.php" target="_blank" rel="noopener">Gerhard Neumann</a></p>
+      <p class="desc">A novel diffusion-based maximum entropy algorithm that achieves SOTA performance against both diffusion-based and non-diffusion methods.</p>
+      <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2502.02316" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://alrhub.github.io/dime-website/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/ALRhub/DIME" target="_blank" rel="noopener">code</a></div>
+      
+    </div>
+  </article>
+</div></div></div>
+<div class="grp"><div class="yr">2024<small>2 papers</small></div><div class="cards">
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://arxiv.org/abs/2406.00681" target="_blank" rel="noopener"><img class="thumb" src="images/ddiffpg.png" alt="Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">NeurIPS 2024</span>
+      <h3 class="ttl"><a href="https://arxiv.org/abs/2406.00681" target="_blank" rel="noopener">Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient</a></h3>
+      <p class="authors"><span class="me">Zechu Li</span>, <span class="au">Rickmer Krohn</span>, <a href="https://taochenshh.github.io/" target="_blank" rel="noopener">Tao Chen</a>, <a href="https://anuragajay.github.io/" target="_blank" rel="noopener">Anurag Ajay</a>, <a href="https://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <p class="desc">A novel actor-critic algorithm that learns multimodal policies as diffusion models from scratch while maintaining versatile behaviors.</p>
+      <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2406.00681" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://supersglzc.github.io/projects/ddiffpg/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/supersglzc/ddiffpg" target="_blank" rel="noopener">code</a></div>
+      
+    </div>
+  </article>
+</div>
+<div class="node">
+  <article class="card">
+    <a class="fig" href="http://arxiv.org/abs/2403.03949" target="_blank" rel="noopener"><img class="thumb" src="images/realto.gif" alt="Reconciling Reality through Simulation" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">RSS 2024</span>
+      <h3 class="ttl"><a href="http://arxiv.org/abs/2403.03949" target="_blank" rel="noopener">Reconciling Reality through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation</a></h3>
+      <p class="authors"><a href="https://marceltorne.github.io/" target="_blank" rel="noopener">Marcel Torne</a>, <a href="https://anthonysimeonov.github.io/" target="_blank" rel="noopener">Anthony Simeonov</a>, <span class="me">Zechu Li</span>, <span class="au">April Chan</span>, <a href="https://taochenshh.github.io/" target="_blank" rel="noopener">Tao Chen</a>, <a href="https://abhishekunique.github.io/" target="_blank" rel="noopener">Abhishek Gupta*</a>, <a href="https://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal*</a></p>
+      <p class="desc">A system for robustifying real-world imitation learning policies via reinforcement learning in &ldquo;digital twin&rdquo; simulation environments constructed on the fly from small amounts of real-world data.</p>
+      <div class="lnks"><a class="lnk" href="http://arxiv.org/abs/2403.03949" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://real-to-sim-to-real.github.io/RialTo/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/real-to-sim-to-real/RialToPolicyLearning" target="_blank" rel="noopener">code</a></div>
+      
+    </div>
+  </article>
+</div></div></div>
+<div class="grp"><div class="yr">2023<small>3 papers</small></div><div class="cards">
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://openreview.net/pdf?id=vFvw8EzQNLy" target="_blank" rel="noopener"><img class="thumb" src="files/parallel_scheme.png" alt="Parallel Q-Learning" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">ICML 2023</span>
+      <h3 class="ttl"><a href="https://openreview.net/pdf?id=vFvw8EzQNLy" target="_blank" rel="noopener">Parallel Q-Learning: Scaling Off-policy Reinforcement Learning under Massively Parallel Simulation</a></h3>
+      <p class="authors"><span class="me">Zechu Li*</span>, <a href="https://taochenshh.github.io/" target="_blank" rel="noopener">Tao Chen*</a>, <a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a>, <a href="https://anuragajay.github.io/" target="_blank" rel="noopener">Anurag Ajay</a>, <a href="https://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a></p>
+      <p class="desc">A novel parallel Q-learning framework that scales off-policy learning to 10000+ parallel environments.</p>
+      <div class="lnks"><a class="lnk" href="https://openreview.net/pdf?id=vFvw8EzQNLy" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://github.com/Improbable-AI/pql" target="_blank" rel="noopener">code</a></div>
+      
+    </div>
+  </article>
+</div><details class="more"><summary><span class="moreu"><span class="lbl-shut">2 more from 2023</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+<div class="node alt">
+  <article class="card">
+    <a class="fig" href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank" rel="noopener"><img class="thumb" src="images/games-14-00041-g001.png" alt="Social Learning for Sequential Driving Dilemmas" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">Games 2023</span>
+      <h3 class="ttl"><a href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank" rel="noopener">Social Learning for Sequential Driving Dilemmas</a></h3>
+      <p class="authors"><span class="au">Xu Chen</span>, <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a>, <span class="me">Zechu Li</span></p>
+      <p class="desc">Identified whether social dilemmas exist in AVs&rsquo; sequential decision making to help policymakers and AV manufacturers better understand under what circumstances SDDs arise and how to design rewards.</p>
+      <div class="lnks"><a class="lnk" href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank" rel="noopener">paper</a></div>
+      
+    </div>
+  </article>
+</div>
+<div class="node alt">
+  <article class="card">
+    <a class="fig" href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank" rel="noopener"><img class="thumb" src="files/gradient.png" alt="Stationary Deep Reinforcement Learning with Quantum K-spin Hamiltonian Equation" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">ICLR Workshop 2023</span>
+      <h3 class="ttl"><a href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank" rel="noopener">Stationary Deep Reinforcement Learning with Quantum K-spin Hamiltonian Equation</a></h3>
+      <p class="authors"><a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu*</a>, <span class="me">Zechu Li*</span>, <span class="au">Shixun Wu</span>, <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a></p>
+      <p class="desc">Proposed a K-spin Hamiltonian regularization term (called H-term) to help a policy network converge to a high-quality local minima from a quantum perspective.</p>
+      <div class="lnks"><a class="lnk" href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank" rel="noopener">paper</a></div>
+      
+    </div>
+  </article>
+</div></details></div></div>
+<div class="grp"><div class="yr">2022<small>2 papers</small></div><div class="cards">
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html" target="_blank" rel="noopener"><img class="thumb" src="files/distributed_scheme.png" alt="Homomorphic Matrix Completion" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">NeurIPS 2022</span>
+      <h3 class="ttl"><a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html" target="_blank" rel="noopener">Homomorphic Matrix Completion</a></h3>
+      <p class="authors"><a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu*</a>, <span class="me">Zechu Li*</span>, <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a></p>
+      <p class="desc">A homomorphic matrix completion algorithm that satisfies the differential privacy property and reduces the best-known error bound to EXACT recovery at a price of more samples.</p>
+      <div class="lnks"><a class="lnk" href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html" target="_blank" rel="noopener">paper</a></div>
+      
+    </div>
+  </article>
+</div><details class="more"><summary><span class="moreu"><span class="lbl-shut">1 more from 2022</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+<div class="node alt">
+  <article class="card">
+    <a class="fig" href="https://ieeexplore.ieee.org/document/9827289" target="_blank" rel="noopener"><img class="thumb" src="images/social_learning.png" alt="Social Learning In Markov Games" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">IEEE IV 2022</span>
+      <h3 class="ttl"><a href="https://ieeexplore.ieee.org/document/9827289" target="_blank" rel="noopener">Social Learning In Markov Games: Empowering Autonomous Driving</a></h3>
+      <p class="authors"><span class="au">Xu Chen</span>, <span class="me">Zechu Li</span>, <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a></p>
+      <p class="desc">Applied the social learning scheme to Markov games and leverage RL to investigate how individual AVs learn policies and form social norms in traffic scenarios.</p>
+      <div class="lnks"><a class="lnk" href="https://ieeexplore.ieee.org/document/9827289" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://github.com/supersglzc/Social-Learning" target="_blank" rel="noopener">code</a></div>
+      
+    </div>
+  </article>
+</div></details></div></div>
+<div class="grp only"><div class="yr">2021<small>2 papers</small></div><div class="cards"><details class="more"><summary><span class="moreu"><span class="lbl-shut">Show 2 papers</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></span></summary>
+<div class="node alt">
+  <article class="card">
+    <a class="fig" href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank" rel="noopener"><img class="thumb" src="images/finrl_podracer.png" alt="FinRL-Podracer" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">ICAIF 2021</span>
+      <h3 class="ttl"><a href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank" rel="noopener">FinRL-Podracer: High Performance and Scalable Deep Reinforcement Learning for Quantitative Finance</a></h3>
+      <p class="authors"><span class="me">Zechu Li</span>, <a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu</a>, <span class="au">Jiahao Zheng</span>, <a href="https://zhaoranwang.github.io/" target="_blank" rel="noopener">Zhaoran Wang</a>, <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en" target="_blank" rel="noopener">Anwar Walid</a>, <a href="https://idea.edu.cn/person/guojian/" target="_blank" rel="noopener">Jian Guo</a></p>
+      <p class="desc">A framework to accelerate the development pipeline of RL-driven trading strategy and show the high scalability by training a trading agent in 10 minutes with 80 A100 GPUs, on NASDAQ-100 constituent stocks with minute-level data over 10 years.</p>
+      <div class="lnks"><a class="lnk" href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/FinRL_Podracer" target="_blank" rel="noopener">code</a></div>
+      
+    </div>
+  </article>
+</div>
+<div class="node alt">
+  <article class="card">
+    <a class="fig" href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank" rel="noopener"><img class="thumb" src="images/erl_podracer.png" alt="ElegantRL-Podracer" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">NeurIPS Workshop 2021</span>
+      <h3 class="ttl"><a href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank" rel="noopener">ElegantRL-Podracer: Scalable and Elastic Library for Cloud-native Deep Reinforcement Learning</a></h3>
+      <p class="authors"><a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu*</a>, <span class="me">Zechu Li*</span>, <a href="https://www.princeton.edu/~zy6/" target="_blank" rel="noopener">Zhuoran Yang</a>, <span class="au">Jiahao Zheng</span>, <a href="https://zhaoranwang.github.io/" target="_blank" rel="noopener">Zhaoran Wang</a>, <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en" target="_blank" rel="noopener">Anwar Walid</a>, <a href="https://idea.edu.cn/person/guojian/" target="_blank" rel="noopener">Jian Guo</a>, <a href="http://people.eecs.berkeley.edu/~jordan/" target="_blank" rel="noopener">Michael Jordan</a></p>
+      <p class="desc">A scalable and elastic library ElegantRL-podracer for cloud-native deep reinforcement learning, which efficiently supports millions of GPU cores to carry out massively parallel training at multiple levels.</p>
+      <div class="lnks"><a class="lnk" href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank" rel="noopener">code</a></div>
+      
+    </div>
+  </article>
+</div></details></div></div>
+</div>
 
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://arxiv.org/abs/2606.08610" target="_blank">
-                                <img src="images/teaser_page-0001.jpg" alt="RLDC" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning
-                            </papertitle>
-                            <br>
-                            <strong>Zechu Li</strong>, 
-                            <a href="https://yufengjin.github.io/">Yufeng Jin</a>, 
-                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu</a>, 
-                            <a href="https://puzeliu.github.io/">Puze Liu</a>,
-                            <a href="https://pearl-lab.com/vignesh-prasad/">Vignesh Prasad</a>, 
-                            <a href="https://www.caidas.uni-wuerzburg.de/rlcdm/team/carlo-deramo/">Carlo D'Eramo</a>, 
-                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
-                            <br>
-                            <em>arXiv</em>, 2026
-                            <br>
-                            <a href="https://arxiv.org/abs/2606.08610" target="_blank">paper</a> /
-                            <a href="" target="_blank">code</a>
-                            <p></p>
-                            <p>
-                                An agentic framework that formulates the robot RL automation as a harness engineering problem and automates end-to-end simulation workflow from package installation to policy tuning.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+  <div class="sec"><h2>Open Source Projects</h2><span class="ln"></span><span class="cnt">2</span></div>
+  <div class="tl"><div class="grp"><div class="yr"></div><div class="cards">
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://github.com/AI4Finance-Foundation/FinRL" target="_blank" rel="noopener"><img class="thumb" src="images/finrl.png" alt="FinRL" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">GitHub</span>
+      <h3 class="ttl"><a href="https://github.com/AI4Finance-Foundation/FinRL" target="_blank" rel="noopener">FinRL: Financial Reinforcement Learning</a></h3>
+      
+      <p class="desc">The first open-source framework to show the great potential of financial reinforcement learning.</p>
+      <div class="lnks"><a class="lnk" href="https://finrl.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">project page</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/FinRL" target="_blank" rel="noopener">code</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/FinRL/stargazers" target="_blank" rel="noopener">stars</a></div>
+      
+    </div>
+  </article>
+</div>
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank" rel="noopener"><img class="thumb" src="images/elegantrl.jpg" alt="ElegantRL “小雅”" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">GitHub</span>
+      <h3 class="ttl"><a href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank" rel="noopener">ElegantRL “小雅”: Massively Parallel Library for Cloud-native Deep Reinforcement Learning</a></h3>
+      
+      <p class="desc">A massively parallel library for cloud-native deep reinforcement learning (DRL) applications.</p>
+      <div class="lnks"><a class="lnk" href="https://elegantrl.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">project page</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank" rel="noopener">code</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/ElegantRL/stargazers" target="_blank" rel="noopener">stars</a></div>
+      <p class="pi">As a leader of this project, I have been contributing to</p>
+<ul class="plist">
+<li>develop a series of large-scale training frameworks,</li>
+<li>implemente SOTA algorithms and techniques,</li>
+<li>build the documentation website.</li>
+</ul>
+<p class="pi">Starting from Mar. 2021, I started to write tutorial blogs for the community,</p>
+<ul class="plist">
+<li><a href="https://medium.com/mlearning-ai/elegantrl-much-much-more-stable-than-stable-baseline3-f096533c26db" target="_blank" rel="noopener">ElegantRL: Much More Stable Deep Reinforcement Learning Algorithms than Stable-Baseline3</a><span class="cite"><em>MLearning.ai</em>, Mar. 3, 2022</span></li>
+<li><a href="https://elegantrl.medium.com/elegantrl-podracer-scalable-and-elastic-library-for-cloud-native-deep-reinforcement-learning-bafda6f7fbe0" target="_blank" rel="noopener">ElegantRL-Podracer: A Scalable and Elastic Library for Cloud-Native Deep Reinforcement Learning</a><span class="cite"><em>Towards data science</em>, Dec. 11, 2021</span></li>
+<li><a href="https://medium.com/@elegantrl/elegantrl-mastering-the-ppo-algorithm-part-i-9f36bc47b791" target="_blank" rel="noopener">ElegantRL: Mastering PPO Algorithms</a><span class="cite"><em>Towards data science</em>, May. 3, 2021</span></li>
+<li><a href="https://medium.com/mlearning-ai/elegantrl-demo-stock-trading-using-ddpg-part-ii-d3d97e01999f" target="_blank" rel="noopener">ElegantRL Demo: Stock Trading Using DDPG (Part II)</a><span class="cite"><em>MLearning.ai</em>, Apr. 19, 2021</span></li>
+<li><a href="https://elegantrl.medium.com/elegantrl-demo-stock-trading-using-ddpg-part-i-e77d7dc9d208" target="_blank" rel="noopener">ElegantRL Demo: Stock Trading Using DDPG (Part I)</a><span class="cite"><em>MLearning.ai</em>, Mar. 28, 2021</span></li>
+<li><a href="https://towardsdatascience.com/elegantrl-a-lightweight-and-stable-deep-reinforcement-learning-library-95cef5f3460b" target="_blank" rel="noopener">ElegantRL-Helloworld: A Lightweight and Stable Deep Reinforcement Learning Library</a><span class="cite"><em>Towards data science</em>, Mar. 4, 2021</span></li>
+</ul>
+    </div>
+  </article>
+</div></div></div></div>
 
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://arxiv.org/abs/2606.22471" target="_blank">
-                                <img src="images/iros.jpg" alt="RLDC" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Scalable Multi-Task Data Generation via Reinforcement Learning for Language-Conditioned Bimanual Dexterous Manipulation
-                            </papertitle>
-                            <br>
-                            <strong>Zechu Li</strong>, 
-                            <a href="https://yufengjin.github.io/">Yufeng Jin</a>, 
-                            <a href="https://puzeliu.github.io/">Puze Liu</a>,
-                            <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters">Jan Peters</a>, 
-                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
-                            <br>
-                            <em>IROS</em>, 2026
-                            <br>
-                            <a href="https://arxiv.org/abs/2606.22471" target="_blank">paper</a>
-                            <p></p>
-                            <p>
-                                An RL-based data-generation pipeline for language-conditioned bimanual arm-hand manipulation.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+  <div class="sec"><h2>Book Chapter</h2><span class="ln"></span><span class="cnt">1</span></div>
+  <div class="tl"><div class="grp"><div class="yr"></div><div class="cards">
+<div class="node">
+  <article class="card">
+    <a class="fig" href="https://www.sciencedirect.com/science/article/pii/B9780128244470000157" target="_blank" rel="noopener"><img class="thumb" src="images/book.jpg" alt="High-performance Tensor Decompositions for Compressing and Accelerating Deep Neural Networks" loading="lazy" decoding="async"></a>
+    <div>
+      <span class="vbadge">Elsevier 2021</span>
+      <h3 class="ttl"><a href="https://www.sciencedirect.com/science/article/pii/B9780128244470000157" target="_blank" rel="noopener">High-performance Tensor Decompositions for Compressing and Accelerating Deep Neural Networks</a></h3>
+      <p class="authors"><a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu</a>, <span class="au">Yiming Fang</span>, <span class="au">Liuqing Yang</span>, <span class="me">Zechu Li</span>, <a href="http://www.bell-labs.com/about/researcher-profiles/anwarwalid/#gref" target="_blank" rel="noopener">Anwar Walid</a></p>
+      <p class="desc">This chapter takes a practical approach to seek a better efficiency-accuracy trade-off, which utilizes high performance tensor decompositions to compress and accelerate neural networks by exploiting low-rank structures of the network weight matrix.</p>
+      <div class="lnks"><a class="lnk" href="https://www.sciencedirect.com/science/article/pii/B9780128244470000157" target="_blank" rel="noopener">chapter</a><a class="lnk" href="https://www.elsevier.com/books/tensors-for-data-processing/liu/978-0-12-824447-0" target="_blank" rel="noopener">book</a></div>
+      
+    </div>
+  </article>
+</div></div></div></div>
+</main>
+</div>
 
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://arxiv.org/abs/2505.05287" target="_blank">
-                                <video autoplay muted loop src="images/symdex.mp4" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Morphologically Symmetric Reinforcement Learning for Ambidextrous Bimanual Manipulation
-                            </papertitle>
-                            <br>
-                            <strong>Zechu Li</strong>, 
-                            <a href="https://yufengjin.github.io/">Yufeng Jin</a>, 
-                            <a href="https://daniel-ordonez-apraez.netlify.app/">Daniel Ordoñez Apraez</a>, 
-                            <a href="https://www.iit.it/people-details/-/people/claudio-semini">Claudio Semini</a>, 
-                            <a href="https://puzeliu.github.io/">Puze Liu</a>, 
-                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
-                            <br>
-                            <em>CoRL</em>, 2025
-                            <br>
-                            <a href="https://arxiv.org/abs/2505.05287" target="_blank">paper</a> /
-                            <a href="https://supersglzc.github.io/projects/symdex/" target="_blank">website</a> /
-                            <a href="https://github.com/supersglzc/symdex" target="_blank">code</a>
-                            <p></p>
-                            <p>
-                                A novel RL framework that explicitly leverages the inherent morphological symmetry in bimanual robotic systems to enable ambidextrous control.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
 
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://arxiv.org/abs/2502.02316" target="_blank">
-                                <img src="images/DIME.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>DIME: Diffusion-Based Maximum Entropy Reinforcement Learning
-                            </papertitle>
-                            <br>
-                            <a href="https://onur4229.github.io/">Onur Celik</a>, 
-                            <strong>Zechu Li</strong>, 
-                            <a href="https://denisbless.github.io/">Denis Blessing</a>, 
-                            <a href="https://brucegeli.github.io/">Ge Li</a>, 
-                            <a href="https://www.ias.informatik.tu-darmstadt.de/Team/DanielPalenicek">Daniel Palenicek</a>, 
-                            <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters">Jan Peters</a>, 
-                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>,
-                            <a href="https://alr.iar.kit.edu/21_65.php">Gerhard Neumann</a>
-                            <br>
-                            <em>ICML</em>, 2025
-                            <br>
-                            <a href="https://arxiv.org/abs/2502.02316" target="_blank">paper</a> /
-                            <a href="https://alrhub.github.io/dime-website/" target="_blank">website</a> /
-                            <a href="https://github.com/ALRhub/DIME" target="_blank">code</a>
-                            <p></p>
-                            <p>
-                                A novel diffusion-based maximum entropy algorithm that achieves SOTA performance against both diffusion-based and non-diffusion methods.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
 
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://arxiv.org/abs/2406.00681" target="_blank">
-                                <img src="images/ddiffpg.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient
-                            </papertitle>
-                            <br>
-                            <strong>Zechu Li</strong>, 
-                            Rickmer Krohn, 
-                            <a href="https://taochenshh.github.io/">Tao Chen</a>, 
-                            <a href="https://anuragajay.github.io/">Anurag Ajay</a>, 
-                            <a href="https://people.csail.mit.edu/pulkitag/">Pulkit Agrawal</a>, 
-                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
-                            
-                            <br>
-                            <em>NeurIPS</em>, 2024
-                            <br>
-                            <a href="https://arxiv.org/abs/2406.00681" target="_blank">paper</a> /
-                            <a href="https://supersglzc.github.io/projects/ddiffpg/" target="_blank">website</a> /
-                            <a href="https://github.com/supersglzc/ddiffpg" target="_blank">code</a>
-                            <p></p>
-                            <p>
-                                A novel actor-critic algorithm that learns multimodal policies as diffusion models from scratch while maintaining versatile behaviors. 
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-79592980-2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-79592980-2');
+</script>
 
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="http://arxiv.org/abs/2403.03949" target="_blank">
-                                <img src="images/realto.gif" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Reconciling Reality through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation
-                            </papertitle>
-                            <br>
-                            <a href="https://marceltorne.github.io/">Marcel Torne</a>, 
-                            <a href="https://anthonysimeonov.github.io/">Anthony Simeonov</a>, 
-                            <strong>Zechu Li</strong>, 
-                            April Chan, 
-                            <a href="https://taochenshh.github.io/">Tao Chen</a>, 
-                            <a href="https://abhishekunique.github.io/">Abhishek Gupta*</a>, 
-                            <a href="https://people.csail.mit.edu/pulkitag/">Pulkit Agrawal*</a> 
-                            <br>
-                            <em>Robotics: Science and Systems (RSS)</em>, 2024
-                            <br>
-                            <a href="http://arxiv.org/abs/2403.03949" target="_blank">paper</a> /
-                            <a href="https://real-to-sim-to-real.github.io/RialTo/" target="_blank">website</a> /
-                            <a href="https://github.com/real-to-sim-to-real/RialToPolicyLearning" target="_blank">code</a>
-                            <p></p>
-                            <p>
-                                A system for robustifying real-world imitation learning policies via reinforcement learning in "digital twin" simulation environments constructed on the fly from small amounts of real-world data. 
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://openreview.net/pdf?id=vFvw8EzQNLy" target="_blank">
-                                <img src="files/parallel_scheme.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Parallel Q-Learning: Scaling Off-policy Reinforcement Learning under Massively Parallel Simulation
-                            </papertitle>
-                            <br>
-                            <strong>Zechu Li*</strong>, 
-                            <a href="https://taochenshh.github.io/">Tao Chen*</a>, 
-                            <a href="https://williamd4112.github.io/">Zhang-Wei Hong</a>, 
-                            <a href="https://anuragajay.github.io/">Anurag Ajay</a>, 
-                            <a href="https://people.csail.mit.edu/pulkitag/">Pulkit Agrawal</a>
-                            <br>
-                            <em>ICML</em>, 2023
-                            <br>
-                            <a href="https://openreview.net/pdf?id=vFvw8EzQNLy" target="_blank">paper</a> /
-                            <a href="https://github.com/Improbable-AI/pql">code</a>
-                            <p></p>
-                            <p>
-                                A novel parallel Q-learning framework that scales off-policy learning to 10000+ parallel environments.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html" target="_blank">
-                                <img src="files/distributed_scheme.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Homomorphic Matrix Completion
-                            </papertitle>
-                            <br>
-                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu*</a>, 
-                            <strong>Zechu Li*</strong>, 
-                            <a href="https://www.ee.columbia.edu/~wangx/">Xiaodong Wang</a>
-                            <br>
-                            <em>NeurIPS</em>, 2022
-                            <br>
-                            <a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html" target="_blank">paper</a>
-                            <p></p>
-                            <p>
-                                A homomorphic matrix completion algorithm that satisfies the differential privacy property and reduces the best-known error bound to EXACT recovery at a price of more samples. 
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td class="toggle-heading" onclick="toggleOtherPublications()">
-                            <heading><i class="fas fa-chevron-right" id="other-publications-icon"></i> Other Publications</heading>
-                        </td>
-                    </tr>
-                </table>
-                <div id="other-publications" style="display:none">
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://arxiv.org/abs/2605.11665v1" target="_blank">
-                                <img src="images/nautilus.png" alt="Nautilus" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Nautilus: From One Prompt to Plug-and-Play Robot Learning
-                            </papertitle>
-                            <br>
-                            <a href="https://yufengjin.github.io/">Yufeng Jin*</a>, 
-                            <a href="https://ventusff.github.io/">Jianfei Guo*</a>, 
-                            <a href="https://xiaogangjia.github.io/Personal_Website/">Xiaogang Jia</a>, 
-                            <a href="https://yudeng321.github.io/">Yu Deng</a>, 
-                            <strong>Zechu Li</strong>, 
-                            <a href="https://www.linkedin.com/in/han-liu-697a442aa/">Han Liu</a>, 
-                            Weiran Liao, 
-                            <a href="https://pearl-lab.com/vignesh-prasad/">Vignesh Prasad</a>, 
-                            <a href="https://www.linkedin.com/in/mathias-franzius-86b17b2b4/">Mathias Franzius</a>, 
-                            <a href="https://alr.iar.kit.edu/21_65.php">Gerhard Neumann</a>, 
-                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
-                            <br>
-                            <em>arXiv</em>, 2026
-                            <br>
-                            <a href="https://arxiv.org/abs/2605.11665v1" target="_blank">paper</a> /
-                            <a href="https://yufengjin.github.io/projects/nautilus/" target="_blank">website</a>
-                            <p></p>
-                            <p>
-                                An open-source agentic harness that turns a single natural-language prompt into ready-to-use reproduction, evaluation, fine-tuning, and deployment workflows for robot learning research.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://arxiv.org/abs/2511.01501" target="_blank">
-                                <img src="images/se3poseflow.webp" alt="SE3-PoseFlow" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>SE(3)-PoseFlow: Estimating 6D Pose Distributions for Uncertainty-Aware Robotic Manipulation
-                            </papertitle>
-                            <br>
-                            <a href="https://yufengjin.github.io/">Yufeng Jin</a>, 
-                            <a href="https://niklasfunk.com/">Niklas Funk</a>, 
-                            <a href="https://pearl-lab.com/vignesh-prasad/">Vignesh Prasad</a>, 
-                            <strong>Zechu Li</strong>, 
-                            <a href="https://www.linkedin.com/in/mathias-franzius-86b17b2b4/">Mathias Franzius</a>, 
-                            <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters">Jan Peters</a>, 
-                            <a href="https://pearl-lab.com/people/georgia-chalvatzaki/">Georgia Chalvatzaki</a>
-                            <br>
-                            <em>ICRA</em>, 2026
-                            <br>
-                            <a href="https://arxiv.org/abs/2511.01501" target="_blank">paper</a> /
-                            <a href="https://yufengjin.github.io/projects/se3-poseflow/" target="_blank">website</a>
-                            <p></p>
-                            <p>
-                                A probabilistic framework that leverages flow matching on the SE(3) manifold to estimate full 6D object pose distributions, enabling uncertainty-aware robotic manipulation under partial observability, occlusions, and symmetries.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank">
-                                <img src="images/games-14-00041-g001.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Social Learning for Sequential Driving Dilemmas
-                            </papertitle>
-                            <br>
-                            Xu Chen, 
-                            <a href="https://sharondi-columbia.wixsite.com/ditectlab">Sharon (Xuan) Di</a>, 
-                            <strong>Zechu Li</strong>
-                            <br>
-                            <em>Games</em>, 2023
-                            <br>
-                            <a href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank">paper</a>
-                            <p></p>
-                            <p>
-                                Identified whether social dilemmas exist in AVs' sequential decision making to help policymakers and AV manufacturers better understand under what circumstances SDDs arise and how to design rewards.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank">
-                                <img src="files/gradient.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Stationary Deep Reinforcement Learning with Quantum K-spin Hamiltonian Equation
-                            </papertitle>
-                            <br>
-                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu*</a>, 
-                            <strong>Zechu Li*</strong>, 
-                            Shixun Wu, 
-                            <a href="https://www.ee.columbia.edu/~wangx/">Xiaodong Wang</a>
-                            <br>
-                            <em>Workshop on Physics for Machine Learning, ICLR</em>, 2023
-                            <br>
-                            <a href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank">paper</a>
-                            <p></p>
-                            <p>
-                                Proposed a K-spin Hamiltonian regularization term (called H-term) to help a policy network converge to a high-quality local minima from a quantum perspective.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://ieeexplore.ieee.org/document/9827289" target="_blank">
-                                <img src="images/social_learning.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>Social Learning In Markov Games: Empowering Autonomous Driving
-                            </papertitle>
-                            <br>
-                            Xu Chen, 
-                            <strong>Zechu Li</strong>, 
-                            <a href="https://sharondi-columbia.wixsite.com/ditectlab">Sharon (Xuan) Di</a>
-                            <br>
-                            <em>IEEE Intelligent Vehicles Symposium (IV)</em>, 2022
-                            <br>
-                            <a href="https://ieeexplore.ieee.org/document/9827289" target="_blank">paper</a> /
-                            <a href="https://github.com/supersglzc/Social-Learning">code</a>
-                            <p></p>
-                            <p>
-                                Applied the social learning scheme to Markov games and leverage RL to investigate how individual AVs learn policies and form social norms in traffic scenarios. 
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank">
-                                <img src="images/finrl_podracer.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>FinRL-Podracer: High Performance and Scalable Deep Reinforcement Learning for Quantitative Finance
-                            </papertitle>
-                            <br>
-                            <strong>Zechu Li</strong>, 
-                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu</a>, 
-                            Jiahao Zheng, 
-                            <a href="https://zhaoranwang.github.io/">Zhaoran Wang</a>, 
-                            <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en">Anwar Walid</a>, 
-                            <a href="https://idea.edu.cn/person/guojian/">Jian Guo</a>
-                            <br>
-                            <em>ACM International Conference on AI in Finance (ICAIF)</em>, 2021
-                            <br>
-                            <a href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank">paper</a> /
-                            <a href="https://github.com/AI4Finance-Foundation/FinRL_Podracer">code</a>
-                            <p></p>
-                            <p>
-                                A framework to accelerate the development pipeline of RL-driven trading strategy and show the high scalability by training a trading agent in 10 minutes with 80 A100 GPUs, on NASDAQ-100 constituent stocks with minute-level data over 10 years.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank">
-                                <img src="images/erl_podracer.png" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>ElegantRL-Podracer: Scalable and Elastic Library for Cloud-native Deep Reinforcement Learning
-                            </papertitle>
-                            <br>
-                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu*</a>, 
-                            <strong>Zechu Li*</strong>, 
-                            <a href="https://www.princeton.edu/~zy6/">Zhuoran Yang</a>, 
-                            Jiahao Zheng, 
-                            <a href="https://zhaoranwang.github.io/">Zhaoran Wang</a>, 
-                            <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en">Anwar Walid</a>, 
-                            <a href="https://idea.edu.cn/person/guojian/">Jian Guo</a>, 
-                            <a href="http://people.eecs.berkeley.edu/~jordan/">Michael Jordan</a>
-                            <br>
-                            <em>Deep Reinforcement Learning Workshop, NeurIPS</em>, 2021
-                            <br>
-                            <a href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank">paper</a> /
-                            <a href="https://github.com/AI4Finance-Foundation/ElegantRL">code</a>
-                            <p></p>
-                            <p>
-                                A scalable and elastic library ElegantRL-podracer for cloud-native deep reinforcement learning, which efficiently supports millions of GPU cores to carry out massively parallel training at multiple levels. 
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                </div>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                  <tr>
-                      <td>
-                          <heading>Open Source Projects</heading>
-                      </td>
-                  </tr>
-              </table>
-
-            <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-              <tr>
-                  <td style="padding:20px;width:25%;vertical-align:middle">
-                      <a href="https://github.com/AI4Finance-Foundation/FinRL" target="_blank">
-                          <img src="images/finrl.png" alt="sym" width="100%" style="border-radius:5px">
-                      </a>
-                  </td>
-                  <td style="padding:20px;width:75%;vertical-align:middle">
-                      <papertitle>FinRL: Financial Reinforcement Learning
-                      </papertitle>
-                      <br>
-                      <a href="https://finrl.readthedocs.io/en/latest/index.html" target="_blank">project page</a> /
-                      <a href="https://github.com/AI4Finance-Foundation/FinRL">code</a> /
-                      <a class="github-button" href="https://github.com/AI4Finance-Foundation/FinRL" data-icon="octicon-star" data-show-count="true" aria-label="Star AI4Finance-Foundation/FinRL on GitHub" target="_blank">GitHub Star</a>
-                      <p></p>
-                      <p>
-                        The first open-source framework to show the great potential of financial reinforcement learning. 
-                      </p>
-                  </td>
-              </tr>
-          </table>
-                
-             <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                <tr>
-                    <td style="padding:20px;width:25%;vertical-align:middle">
-                        <a href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank">
-                            <img src="images/elegantrl.jpg" alt="sym" width="100%" style="border-radius:5px">
-                        </a>
-                    </td>
-                    <td style="padding:20px;width:75%;vertical-align:middle">
-                        <papertitle>ElegantRL “小雅”: Massively Parallel Library for Cloud-native Deep Reinforcement Learning
-                        </papertitle>
-                        <br>
-                        <a href="https://elegantrl.readthedocs.io/en/latest/index.html" target="_blank">project page</a> /
-                        <a href="https://github.com/AI4Finance-Foundation/ElegantRL">code</a> /
-                        <a class="github-button" href="https://github.com/AI4Finance-Foundation/ElegantRL" data-icon="octicon-star" data-show-count="true" aria-label="Star AI4Finance-Foundation/ElegantRL on GitHub" target="_blank">GitHub Star</a>
-                        <p></p>
-                        <p>
-                            A massively parallel library for cloud-native deep reinforcement learning (DRL) applications.
-                            <br>
-                            <br>
-                            As a leader of this project, I have been contributing to 
-                            <ul style="margin-top: -15px;">
-                                <li>develop a series of large-scale training frameworks,</li>
-                                <li>implemente SOTA algorithms and techniques,</li>
-                                <li>build the documentation website.</li>
-                            </ul>
-                            Starting from Mar. 2021, I started to write tutorial blogs for the community,
-                            <ul style="margin-top: 0px;">
-                                <li><a href="https://medium.com/mlearning-ai/elegantrl-much-much-more-stable-than-stable-baseline3-f096533c26db">ElegantRL: Much More Stable Deep Reinforcement Learning Algorithms than Stable-Baseline3</a>, <br> <em>MLearning.ai</em>, Mar. 3, 2022.</li>
-                                <li><a href="https://elegantrl.medium.com/elegantrl-podracer-scalable-and-elastic-library-for-cloud-native-deep-reinforcement-learning-bafda6f7fbe0">ElegantRL-Podracer: A Scalable and Elastic Library for Cloud-Native Deep Reinforcement Learning</a>, <br> <em>Towards data science</em>, Dec. 11, 2021.</li>
-                                <li><a href="https://medium.com/@elegantrl/elegantrl-mastering-the-ppo-algorithm-part-i-9f36bc47b791">ElegantRL: Mastering PPO Algorithms</a>, <br> <em>Towards data science</em>, May. 3, 2021.</li>
-                                <li><a href="https://medium.com/mlearning-ai/elegantrl-demo-stock-trading-using-ddpg-part-ii-d3d97e01999f">ElegantRL Demo: Stock Trading Using DDPG (Part II)</a>, <br> <em>MLearning.ai</em>, Apr. 19, 2021.</li>
-                                <li><a href="https://elegantrl.medium.com/elegantrl-demo-stock-trading-using-ddpg-part-i-e77d7dc9d208">ElegantRL Demo: Stock Trading Using DDPG (Part I)</a>, <br> <em>MLearning.ai</em>, Mar. 28, 2021.</li>
-                                <li><a href="https://towardsdatascience.com/elegantrl-a-lightweight-and-stable-deep-reinforcement-learning-library-95cef5f3460b">ElegantRL-Helloworld: A Lightweight and Stable Deep Reinforcement Learning Library</a>, <br> <em>Towards data science</em>, Mar. 4, 2021.</li>
-
-                            </ul>
-
-                        </p>
-                    </td>
-                </tr>
-            </table>
-
-                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                      <tr>
-                          <td>
-                              <heading>Book Chapter</heading>
-                          </td>
-                      </tr>
-                  </table>
-                  
-                  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tr>
-                        <td style="padding:20px;width:25%;vertical-align:middle">
-                            <a href="https://www.sciencedirect.com/science/article/pii/B9780128244470000157" target="_blank">
-                                <img src="images/book.jpg" alt="sym" width="100%" style="border-radius:5px">
-                            </a>
-                        </td>
-                        <td style="padding:20px;width:75%;vertical-align:middle">
-                            <papertitle>High-performance Tensor Decompositions for Compressing and Accelerating Deep Neural Networks
-                            </papertitle>
-                            <br>
-                            <a href="http://www.tensorlet.org/">Xiao-Yang Liu</a>, 
-                            Yiming Fang, 
-                            Liuqing Yang, 
-                            <strong>Zechu Li</strong>, 
-                            <a href="http://www.bell-labs.com/about/researcher-profiles/anwarwalid/#gref">Anwar Walid</a>
-                            <br>
-                            <em>Tensors for Data Processing, Elsevier</em>, 2021
-                            <br>
-                            <a href="https://www.sciencedirect.com/science/article/pii/B9780128244470000157" target="_blank">chapter</a> /
-                            <a href="https://www.elsevier.com/books/tensors-for-data-processing/liu/978-0-12-824447-0">book</a>
-                            <p></p>
-                            <p>  
-                                This chapter takes a practical approach to seek a better efficiency-accuracy trade-off, which utilizes high performance tensor decompositions to compress and accelerate neural networks by exploiting low-rank structures of the network weight matrix.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-
-                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <br>
-                                <p align="right">
-                                    <font size="2">
-                                        <a href="https://people.eecs.berkeley.edu/~barron/" target="_blank">This guy makes a nice webpage.</a>
-                                    </font>
-                                </p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- Global site tag (gtag.js) - Google Analytics -->
-                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79592980-2"></script>
-                <script>
-                    window.dataLayer = window.dataLayer || [];
-
-                    function gtag() {
-                        dataLayer.push(arguments);
-                    }
-                    gtag('js', new Date());
-
-                    gtag('config', 'UA-79592980-2');
-                </script>
-
-            </td>
-        </tr>
-    </table>
 </body>
-
 </html>
