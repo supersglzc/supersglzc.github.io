@@ -15,20 +15,17 @@ PROFILE = {
     "tagline": "Reinforcement learning &middot; Robotics &middot; Scalable systems",
     "keywords": ["Reinforcement Learning", "Robotics", "Massively Parallel Simulation", "Scalable Systems"],
     "bio": [
-        'I am a PhD student at <a href="https://pearl-lab.com/" target="_blank" rel="noopener">PEARL Lab</a> '
-        'advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a> '
-        'from Oct 2024. My research interest lies in reinforcement learning, especially its applications '
-        '(e.g., robotics, finance, and transportation) and high-performance and scalable systems.',
+        'I am a PhD student at <a href="https://pearl-lab.com/" target="_blank" rel="noopener">PEARL Lab</a>, advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a> since October 2024, '
+        'and currently a Student Researcher at <a href="https://deepmind.google/" target="_blank" rel="noopener">Google DeepMind</a> in London. Previously, I was a visiting '
+        'researcher at <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">MIT CSAIL</a> with Prof. <a href="http://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a> and interned at <a href="https://www.dexmate.ai/" target="_blank" rel="noopener">DexMate</a> and <a href="https://www.idea.edu.cn/" target="_blank" rel="noopener">IDEA Research</a>.',
 
-        'Prior to this, I was a visiting researcher at <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">MIT CSAIL</a>, '
-        'advised by Prof. <a href="http://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a>, '
-        'where I conducted research on massively parallel simulation and sim-to-real in robotics.',
+        'My research focuses on robot learning and reinforcement learning, with particular '
+        'interests in scalable simulation, dexterous and humanoid manipulation, and agentic '
+        'systems for automating robot learning.',
 
-        'I received my bachelor&rsquo;s degree from <a href="https://www.columbia.edu/" target="_blank" rel="noopener">Columbia University</a> '
-        'in May 2022, majoring in <b>computer science</b>. During my undergraduate studies, I was fortunate to work with '
-        'Prof. <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a>, '
-        'Prof. <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&amp;hl=en" target="_blank" rel="noopener">Anwar Walid</a> '
-        'and Prof. <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a>.',
+        'I received my bachelor&rsquo;s degree in computer science from <a href="https://www.columbia.edu/" target="_blank" rel="noopener">Columbia University</a> in May 2022. '
+        'During my undergraduate studies, I was fortunate to work with Prof. <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a>, '
+        'Prof. <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&amp;hl=en" target="_blank" rel="noopener">Anwar Walid</a>, and Prof. <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a>.',
     ],
     "links": [
         ("Email", "mailto:zl2993@columbia.edu", "far fa-envelope"),
