@@ -108,8 +108,7 @@ SELECTED = [
         "media": ("img", "images/harbor_demo.webp"),   # animated WebP: autoplays + loops on its own
         "href": "https://arxiv.org/abs/2606.08610",
         "links": [("paper", "https://arxiv.org/abs/2606.08610"), ("code", "")],
-        "desc": "An agentic framework that formulates the robot RL automation as a harness engineering problem "
-                "and automates end-to-end simulation workflow from package installation to policy tuning.",
+        "desc": "Automates the end-to-end robot RL workflow, from package installation to policy tuning.",
     },
     {
         "id": "bimanual-datagen",
@@ -119,7 +118,7 @@ SELECTED = [
         "media": ("img", "images/iros.jpg"),
         "href": "https://arxiv.org/abs/2606.22471",
         "links": [("paper", "https://arxiv.org/abs/2606.22471")],
-        "desc": "An RL-based data-generation pipeline for language-conditioned bimanual arm-hand manipulation.",
+        "desc": "Generates multi-task demonstrations for language-conditioned bimanual manipulation via RL.",
     },
     {
         "id": "symdex",
@@ -131,8 +130,7 @@ SELECTED = [
         "links": [("paper", "https://arxiv.org/abs/2505.05287"),
                   ("website", "https://supersglzc.github.io/projects/symdex/"),
                   ("code", "https://github.com/supersglzc/symdex")],
-        "desc": "A novel RL framework that explicitly leverages the inherent morphological symmetry in bimanual "
-                "robotic systems to enable ambidextrous control.",
+        "desc": "Exploits morphological symmetry to learn ambidextrous bimanual manipulation.",
     },
     {
         "id": "dime",
@@ -144,8 +142,7 @@ SELECTED = [
         "links": [("paper", "https://arxiv.org/abs/2502.02316"),
                   ("website", "https://alrhub.github.io/dime-website/"),
                   ("code", "https://github.com/ALRhub/DIME")],
-        "desc": "A novel diffusion-based maximum entropy algorithm that achieves SOTA performance against both "
-                "diffusion-based and non-diffusion methods.",
+        "desc": "Trains diffusion policies with maximum-entropy RL, reaching state-of-the-art returns.",
     },
     {
         "id": "ddiffpg",
@@ -157,8 +154,7 @@ SELECTED = [
         "links": [("paper", "https://arxiv.org/abs/2406.00681"),
                   ("website", "https://supersglzc.github.io/projects/ddiffpg/"),
                   ("code", "https://github.com/supersglzc/ddiffpg")],
-        "desc": "A novel actor-critic algorithm that learns multimodal policies as diffusion models from scratch "
-                "while maintaining versatile behaviors.",
+        "desc": "Learns multimodal diffusion policies from scratch, without demonstrations.",
     },
     {
         "id": "rialto",
@@ -170,8 +166,7 @@ SELECTED = [
         "links": [("paper", "http://arxiv.org/abs/2403.03949"),
                   ("website", "https://real-to-sim-to-real.github.io/RialTo/"),
                   ("code", "https://github.com/real-to-sim-to-real/RialToPolicyLearning")],
-        "desc": "A system for robustifying real-world imitation learning policies via reinforcement learning in "
-                "&ldquo;digital twin&rdquo; simulation environments constructed on the fly from small amounts of real-world data.",
+        "desc": "Robustifies real-world policies by fine-tuning them in digital twins built on the fly.",
     },
     {
         "id": "pql",
@@ -182,7 +177,7 @@ SELECTED = [
         "href": "https://openreview.net/pdf?id=vFvw8EzQNLy",
         "links": [("paper", "https://openreview.net/pdf?id=vFvw8EzQNLy"),
                   ("code", "https://github.com/Improbable-AI/pql")],
-        "desc": "A novel parallel Q-learning framework that scales off-policy learning to 10000+ parallel environments.",
+        "desc": "Scales off-policy RL to 10,000+ parallel environments.",
     },
     {
         "id": "hmc",
@@ -192,8 +187,7 @@ SELECTED = [
         "media": ("img", "files/distributed_scheme.png"),
         "href": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html",
         "links": [("paper", "https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html")],
-        "desc": "A homomorphic matrix completion algorithm that satisfies the differential privacy property and reduces "
-                "the best-known error bound to EXACT recovery at a price of more samples.",
+        "desc": "Achieves exact matrix completion under differential privacy, at the cost of more samples.",
     },
 ]
 
@@ -208,8 +202,7 @@ OTHER = [
         "href": "https://arxiv.org/abs/2605.11665v1",
         "links": [("paper", "https://arxiv.org/abs/2605.11665v1"),
                   ("website", "https://yufengjin.github.io/projects/nautilus/")],
-        "desc": "An open-source agentic harness that turns a single natural-language prompt into ready-to-use "
-                "reproduction, evaluation, fine-tuning, and deployment workflows for robot learning research.",
+        "desc": "Turns a single prompt into reproduction, evaluation, fine-tuning, and deployment workflows.",
     },
     {
         "id": "se3poseflow",
@@ -220,9 +213,7 @@ OTHER = [
         "href": "https://arxiv.org/abs/2511.01501",
         "links": [("paper", "https://arxiv.org/abs/2511.01501"),
                   ("website", "https://yufengjin.github.io/projects/se3-poseflow/")],
-        "desc": "A probabilistic framework that leverages flow matching on the SE(3) manifold to estimate full 6D object "
-                "pose distributions, enabling uncertainty-aware robotic manipulation under partial observability, "
-                "occlusions, and symmetries.",
+        "desc": "Estimates full 6D pose distributions via flow matching on SE(3) for uncertainty-aware manipulation.",
     },
     {
         "id": "sdd",
@@ -232,8 +223,7 @@ OTHER = [
         "media": ("img", "images/games-14-00041-g001.png"),
         "href": "https://www.mdpi.com/2073-4336/14/3/41",
         "links": [("paper", "https://www.mdpi.com/2073-4336/14/3/41")],
-        "desc": "Identified whether social dilemmas exist in AVs&rsquo; sequential decision making to help policymakers and "
-                "AV manufacturers better understand under what circumstances SDDs arise and how to design rewards.",
+        "desc": "Identifies when social dilemmas arise in autonomous vehicles&rsquo; sequential decisions.",
     },
     {
         "id": "kspin",
@@ -243,8 +233,7 @@ OTHER = [
         "media": ("img", "files/gradient.png"),
         "href": "https://openreview.net/pdf?id=LVum7knUA7g",
         "links": [("paper", "https://openreview.net/pdf?id=LVum7knUA7g")],
-        "desc": "Proposed a K-spin Hamiltonian regularization term (called H-term) to help a policy network converge to a "
-                "high-quality local minima from a quantum perspective.",
+        "desc": "Adds a quantum K-spin Hamiltonian regularizer that steers policies toward better optima.",
     },
     {
         "id": "social-markov",
@@ -255,8 +244,7 @@ OTHER = [
         "href": "https://ieeexplore.ieee.org/document/9827289",
         "links": [("paper", "https://ieeexplore.ieee.org/document/9827289"),
                   ("code", "https://github.com/supersglzc/Social-Learning")],
-        "desc": "Applied the social learning scheme to Markov games and leverage RL to investigate how individual AVs "
-                "learn policies and form social norms in traffic scenarios.",
+        "desc": "Studies how autonomous vehicles form social norms through RL in Markov games.",
     },
     {
         "id": "finrl-podracer",
@@ -267,9 +255,7 @@ OTHER = [
         "href": "https://dl.acm.org/doi/10.1145/3490354.3494413",
         "links": [("paper", "https://dl.acm.org/doi/10.1145/3490354.3494413"),
                   ("code", "https://github.com/AI4Finance-Foundation/FinRL_Podracer")],
-        "desc": "A framework to accelerate the development pipeline of RL-driven trading strategy and show the high "
-                "scalability by training a trading agent in 10 minutes with 80 A100 GPUs, on NASDAQ-100 constituent "
-                "stocks with minute-level data over 10 years.",
+        "desc": "Trains a NASDAQ-100 trading agent in 10 minutes on 80 A100 GPUs.",
     },
     {
         "id": "elegantrl-podracer",
@@ -280,8 +266,7 @@ OTHER = [
         "href": "https://arxiv.org/pdf/2112.05923.pdf",
         "links": [("paper", "https://arxiv.org/pdf/2112.05923.pdf"),
                   ("code", "https://github.com/AI4Finance-Foundation/ElegantRL")],
-        "desc": "A scalable and elastic library ElegantRL-podracer for cloud-native deep reinforcement learning, which "
-                "efficiently supports millions of GPU cores to carry out massively parallel training at multiple levels.",
+        "desc": "Scales cloud-native DRL training across millions of GPU cores.",
     },
 ]
 
@@ -314,9 +299,10 @@ PROJECTS = [
         "href": "https://github.com/AI4Finance-Foundation/FinRL",
         "links": [("project page", "https://finrl.readthedocs.io/en/latest/index.html"),
                   ("code", "https://github.com/AI4Finance-Foundation/FinRL"),
-                  ("stars", "https://github.com/AI4Finance-Foundation/FinRL/stargazers")],
-        "desc": "The first open-source framework to show the great potential of financial reinforcement learning.",
+],
+        "desc": "Brings deep reinforcement learning to quantitative finance and automated trading.",
         "repo": "AI4Finance-Foundation/FinRL",
+        "stars": 16207,   # GitHub API, re-run to refresh
     },
     {
         "id": "elegantrl",
@@ -325,9 +311,10 @@ PROJECTS = [
         "href": "https://github.com/AI4Finance-Foundation/ElegantRL",
         "links": [("project page", "https://elegantrl.readthedocs.io/en/latest/index.html"),
                   ("code", "https://github.com/AI4Finance-Foundation/ElegantRL"),
-                  ("stars", "https://github.com/AI4Finance-Foundation/ElegantRL/stargazers")],
-        "desc": "A massively parallel library for cloud-native deep reinforcement learning (DRL) applications.",
+],
+        "desc": "Runs massively parallel DRL training on cloud-native infrastructure.",
         "repo": "AI4Finance-Foundation/ElegantRL",
+        "stars": 4360,   # GitHub API, re-run to refresh
         "contrib_intro": "As a leader of this project, I have been contributing to",
         "contrib": [
             "develop a series of large-scale training frameworks,",
@@ -349,9 +336,7 @@ BOOK = [
         "href": "https://www.sciencedirect.com/science/article/pii/B9780128244470000157",
         "links": [("chapter", "https://www.sciencedirect.com/science/article/pii/B9780128244470000157"),
                   ("book", "https://www.elsevier.com/books/tensors-for-data-processing/liu/978-0-12-824447-0")],
-        "desc": "This chapter takes a practical approach to seek a better efficiency-accuracy trade-off, which utilizes "
-                "high performance tensor decompositions to compress and accelerate neural networks by exploiting "
-                "low-rank structures of the network weight matrix.",
+        "desc": "Compresses and accelerates neural networks with high-performance tensor decompositions.",
     },
 ]
 

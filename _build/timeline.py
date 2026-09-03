@@ -91,8 +91,6 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
 .grp.only .yr{padding-top:5px}
 .yr{grid-column:1;padding-top:19px;text-align:right;
   font-size:21px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
-.yr small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.1em;
-  color:var(--dim2);text-transform:uppercase;margin-top:3px}
 .cards{grid-column:3;min-width:0}
 .node{position:relative;padding-bottom:22px}
 .node::before{content:"";position:absolute;left:calc(-1 * var(--railw)/2 - 6px);top:24px;
@@ -112,12 +110,16 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
 .vbadge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
   color:var(--acc);background:rgba(91,61,245,.08);border-radius:6px;padding:5px 9px}
 .node.alt .vbadge{color:var(--dim);background:#f1f1f4}
+.stars{display:inline-flex;align-items:center;gap:6px;margin-left:7px;vertical-align:middle;
+  font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--dim);
+  background:#f4f4f6;border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+.stars i{color:#e8a317;font-size:10px}
 .ttl{font-size:17px;font-weight:750;line-height:1.3;letter-spacing:-.022em;margin:10px 0 7px}
 .ttl a:hover{color:var(--acc)}
 .authors{font-size:13px;color:var(--dim);line-height:1.6}
-.authors a{font-weight:600}
+.authors a{font-weight:500}
 .authors a:hover{color:var(--acc)}
-.me{color:var(--ink);font-weight:800}
+.me{color:var(--ink);font-weight:800;letter-spacing:-.005em}
 .desc{font-size:13.8px;color:#4b505a;margin-top:9px}
 .lnks{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
 .lnk{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--acc);
@@ -150,7 +152,6 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
   .grp{grid-template-columns:minmax(0,1fr)}
   .yr{grid-column:1;padding:0 0 12px 28px;text-align:left;font-size:18px;
     display:flex;align-items:baseline;gap:9px}
-  .yr small{margin:0}
   .cards{grid-column:1}
   .node{padding-left:28px}
   .node::before{left:0;top:24px}
@@ -166,6 +167,14 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
 """
 
 
+def _stars(n):
+    if n is None:
+        return ""
+    label = "%.1fk" % (n / 1000.0) if n >= 1000 else str(n)
+    return ('<span class="stars" title="%s GitHub stars">'
+            '<i class="fas fa-star" aria-hidden="true"></i>%s</span>' % ("{:,}".format(n), label))
+
+
 def _node(p, base, alt=False, badge=None):
     """One card hanging off the timeline spine."""
     return """
@@ -173,7 +182,7 @@ def _node(p, base, alt=False, badge=None):
   <article class="card">
     <a class="fig" href="%(href)s" target="_blank" rel="noopener">%(media)s</a>
     <div>
-      <span class="vbadge">%(v)s</span>
+      <span class="vbadge">%(v)s</span>%(stars)s
       <h3 class="ttl"><a href="%(href)s" target="_blank" rel="noopener">%(title)s</a></h3>
       %(authors)s
       <p class="desc">%(desc)s</p>
@@ -184,7 +193,7 @@ def _node(p, base, alt=False, badge=None):
 </div>""" % {
         "alt": " alt" if alt else "",
         "href": p["href"], "media": media_html(p, base),
-        "v": badge or venue_year(p, short=True),
+        "v": badge or venue_year(p, short=True), "stars": _stars(p.get("stars")),
         "title": p["title"],
         "authors": '<p class="authors">%s</p>' % authors_html(p) if p.get("authors") else "",
         "desc": p["desc"], "links": links_html(p, ""), "extra": _project_extra(p),
@@ -221,7 +230,6 @@ def publications(base):
     out = ['<div class="tl">']
     for year in sorted(groups, reverse=True):
         g = groups[year]
-        n_all = len(g["sel"]) + len(g["alt"])
         cards = [_node(p, base) for p in g["sel"]]
         if g["alt"]:
             # "N more" only reads right when something is already shown above it
@@ -237,10 +245,10 @@ def publications(base):
                 % (shut, "".join(_node(p, base, alt=True) for p in g["alt"])))
         out.append(
             '<div class="grp%s">'
-            '<div class="yr">%s<small>%d %s</small></div>'
+            '<div class="yr">%s</div>'
             '<div class="cards">%s</div>'
             '</div>'
-            % ("" if g["sel"] else " only", year, n_all, _plural(n_all), "".join(cards)))
+            % ("" if g["sel"] else " only", year, "".join(cards)))
     out.append('</div>')
     return "\n".join(out)
 
