@@ -106,7 +106,7 @@ SELECTED = [
         "id": "harbor",
         "title": "HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning",
         "authors": [ME, a("yufeng"), a("xyliu"), a("puze"), a("vignesh"), a("carlo"), a("georgia")],
-        "venue": "arXiv", "year": "2026",
+        "venue": "CoRL", "year": "2026",
         "media": ("img", "images/harbor_demo.webp"),   # animated WebP: autoplays + loops on its own
         "href": "https://arxiv.org/abs/2606.08610",
         "links": [("paper", "https://arxiv.org/abs/2606.08610"),
