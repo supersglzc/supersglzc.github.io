@@ -19,7 +19,7 @@ PROFILE = {
     "bio": [
         'I am a PhD student at <a href="https://pearl-lab.com/" target="_blank" rel="noopener">PEARL Lab</a>, advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a> since October 2024, '
         'and currently a Student Researcher at <a href="https://deepmind.google/" target="_blank" rel="noopener">Google DeepMind</a> in London. Previously, I was a visiting '
-        'researcher at <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">MIT CSAIL</a> with Prof. <a href="http://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a> and interned at <a href="https://www.dexmate.ai/" target="_blank" rel="noopener">DexMate</a> and <a href="https://www.idea.edu.cn/" target="_blank" rel="noopener">IDEA Research</a>.',
+        'researcher at <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">MIT CSAIL</a> with Prof. <a href="http://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a> and interned at <a href="https://www.idea.edu.cn/" target="_blank" rel="noopener">IDEA Research</a>.',
 
         'My research focuses on robot learning and reinforcement learning, with particular '
         'interests in scalable simulation, dexterous and humanoid manipulation, and agentic '
@@ -45,6 +45,8 @@ ME = ("Zechu Li", None, True)
 ME_EQ = ("Zechu Li*", None, True)
 
 A = {
+    "yuan_eq":      ("Yuan Fang*", None),
+    "haolei":       ("Haolei Tong", None),
     "yufeng":       ("Yufeng Jin", "https://yufengjin.github.io/"),
     "yufeng_eq":    ("Yufeng Jin*", "https://yufengjin.github.io/"),
     "xyliu":        ("Xiao-Yang Liu", "http://www.tensorlet.org/"),
@@ -102,6 +104,17 @@ def a(key):
 
 
 SELECTED = [
+    {
+        "id": "find",
+        "title": "Find Something You Can't Do: Agentic Real-World Reinforcement Learning for Self-Improving VLA Models",
+        "authors": [a("yuan_eq"), ME_EQ, a("haolei"), a("puze"), a("georgia")],
+        "venue": "arXiv", "year": "2026",
+        "media": ("video", "images/find_demo.mp4"),
+        "href": "https://arxiv.org/abs/2609.32069",
+        "links": [("paper", "https://arxiv.org/abs/2609.32069"),
+                  ("website", "https://fangyzzz.github.io/FIND.github.io/")],
+        "desc": "Enables VLA self-improvement through autonomous real-world practice, adaptive task selection, and self-evaluation.",
+    },
     {
         "id": "harbor",
         "title": "HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning",
@@ -178,8 +191,8 @@ SELECTED = [
         "authors": [ME_EQ, a("taochen_eq"), a("zwhong"), a("anurag"), a("pulkit")],
         "venue": "ICML", "year": "2023",
         "media": ("img", "files/parallel_scheme.png"),
-        "href": "https://openreview.net/pdf?id=vFvw8EzQNLy",
-        "links": [("paper", "https://openreview.net/pdf?id=vFvw8EzQNLy"),
+        "href": "https://proceedings.mlr.press/v202/li23f/li23f.pdf",
+        "links": [("paper", "https://proceedings.mlr.press/v202/li23f/li23f.pdf"),
                   ("code", "https://github.com/Improbable-AI/pql")],
         "desc": "Scales off-policy RL to 10,000+ parallel environments.",
     },
@@ -201,11 +214,11 @@ OTHER = [
         "title": "Nautilus: From One Prompt to Plug-and-Play Robot Learning",
         "authors": [a("yufeng_eq"), a("jianfei_eq"), a("xiaogang"), a("yudeng"), ME, a("hanliu"),
                     a("weiran"), a("vignesh"), a("franzius"), a("neumann"), a("georgia")],
-        "venue": "arXiv", "year": "2026",
+        "venue": "NeurIPS", "year": "2026",
         "media": ("img", "images/nautilus.png"),
         "href": "https://arxiv.org/abs/2605.11665v1",
         "links": [("paper", "https://arxiv.org/abs/2605.11665v1"),
-                  ("website", "https://yufengjin.github.io/projects/nautilus/")],
+                  ("website", "https://yufengjin.github.io/nautilus/")],
         "desc": "Turns a single prompt into reproduction, evaluation, fine-tuning, and deployment workflows.",
     },
     {
