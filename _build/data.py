@@ -112,7 +112,8 @@ SELECTED = [
         "media": ("video", "images/find_demo.mp4"),
         "href": "https://arxiv.org/abs/2609.32069",
         "links": [("paper", "https://arxiv.org/abs/2609.32069"),
-                  ("website", "https://fangyzzz.github.io/FIND.github.io/")],
+                  ("website", "https://fangyzzz.github.io/FIND.github.io/"),
+                  ("code", "https://github.com/FangYzzz/FIND")],
         "desc": "Enables VLA self-improvement through autonomous real-world practice, adaptive task selection, and self-evaluation.",
     },
     {
