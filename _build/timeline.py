@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""The homepage design: one chronological timeline of publications.
+"""The homepage design: one column, publications grouped by year.
 
-Every publication sits under its own year. Selected ones are always visible;
-the rest are folded away and appear directly beneath the selected papers of
-the same year when unfolded. The fold is a visually hidden checkbox, so the
-page needs no JavaScript.
+Everything (header, bio, section headings, cards) shares a single left and
+right edge. Selected publications are always visible; the rest of each year
+sits behind a native <details> fold directly beneath them, so the page needs
+no JavaScript.
 """
 
 from collections import OrderedDict
@@ -16,153 +16,131 @@ from common import (page, authors_html, links_html, media_html, venue_year,
 PRECONNECT = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
               '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>')
 FONTS = (PRECONNECT + '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
-         'family=Manrope:wght@400;500;600;700;800&display=swap">')
+         'family=Google+Sans:wght@400;500;600;700&display=swap">')
 
 
 CSS = """
 :root{
-  --bg:#fbfbfc; --paper:#fff; --ink:#131519; --dim:#5d626c; --dim2:#9ba0aa;
-  --line:#e6e7ea; --acc:#5b3df5; --acc2:#e0397a;
-  --yrw:92px;       /* column 1: the year label   */
-  --railw:52px;     /* column 2: the timeline rail */
-  --indent:144px;   /* = yrw + railw: everything outside the timeline lines
-                       up with the cards, leaving the rail its own margin */
+  --bg:#fbfbfc; --paper:#fff; --ink:#131519; --body:#3a3f48; --dim:#5d626c; --dim2:#9ba0aa;
+  --line:#e6e7ea; --card-line:#ececf0; --well:#f5f5f7;
+  --acc:#5b3df5; --acc-ink:#4a30d6; --acc-soft:rgba(91,61,245,.08); --acc-line:rgba(91,61,245,.38);
+  --pf:224px;
+  --c-violet:#6d4bff;
 }
-body{background:var(--bg);color:var(--ink);font:400 15.5px/1.68 "Manrope",system-ui,sans-serif;
+body{background:
+    radial-gradient(620px 420px at 12% -6%,rgba(109,75,255,.13),transparent 70%),
+    radial-gradient(560px 380px at 58% -12%,rgba(47,124,246,.10),transparent 70%),
+    radial-gradient(520px 420px at 96% 4%,rgba(232,69,124,.10),transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;color:var(--ink);font:400 16.5px/1.7 "Google Sans",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased}
 a{text-decoration:none}
-.wrap{max-width:1060px;margin:0 auto;padding:0 26px 100px}
-.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wrap{max-width:1020px;margin:0 auto;padding:0 28px 96px}
+
+/* inline links: accent text, no underline */
+.bio a,.plist a{color:var(--acc);font-weight:500;transition:color .15s}
+.bio a:hover,.plist a:hover{color:var(--acc-ink)}
 
 /* ---------- header ---------- */
-header,.bio,.sec{margin-left:var(--indent)}
-header{padding:76px 0 0;display:grid;grid-template-columns:1fr 212px;gap:44px;align-items:center}
-.pf{width:196px;height:196px;object-fit:cover;border-radius:50%;background:var(--paper);
-  border:5px solid var(--paper);box-shadow:0 10px 34px -14px rgba(19,21,25,.32);margin-left:auto}
-h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-height:1.05}
-.social{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
-.social a{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
-  border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 14px;
-  transition:border-color .18s,color .18s,transform .18s}
-.social a:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
-.social i{color:var(--dim2);font-size:12.5px}
-.social a:hover i{color:var(--acc)}
-.bio{margin-top:34px;display:grid;gap:14px;max-width:72ch;color:#3a3f48}
-.bio a{color:var(--acc);border-bottom:1px solid rgba(91,61,245,.25);font-weight:600}
-.bio a:hover{color:var(--acc2);border-color:var(--acc2)}
+header{padding:96px 0 0;display:grid;grid-template-columns:minmax(0,1fr) var(--pf);
+  gap:56px;align-items:start}
+.pf{width:var(--pf);height:var(--pf);object-fit:cover;border-radius:50%;background:var(--well);
+  box-shadow:0 0 0 1px rgba(19,21,25,.06),0 14px 32px -20px rgba(19,21,25,.45)}
+h1{font-size:clamp(34px,5.4vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1.1}
+.social{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.social a{--b:var(--c-violet);display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;
+  color:var(--ink);border:1px solid color-mix(in srgb,var(--b) 26%,transparent);
+  background:var(--paper);border-radius:999px;padding:7px 14px;
+  transition:background .15s,border-color .15s,color .15s,transform .15s}
+.social a[href*="scholar.google"]{--b:#4285f4}
+.social a[href*="github.com"],.social a[href*="x.com"]{--b:#1f2328;border-color:var(--line)}
+.social a[href*="linkedin.com"]{--b:#0a66c2}
+.social a:hover{background:var(--b);border-color:var(--b);color:#fff;transform:translateY(-1px)}
+.social i{color:var(--b);font-size:14px;width:14px;text-align:center;transition:color .15s}
+.social i.ai{font-size:16px}
+.social a:hover i{color:#fff}
+.bio{margin-top:20px;display:grid;gap:16px;color:var(--body)}
 
 /* ---------- section headings ---------- */
-.sec{margin:74px 0 30px var(--indent);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.sec h2{font-size:19px;font-weight:800;letter-spacing:-.028em}
-.sec .ln{flex:1;height:1px;background:var(--line);min-width:20px}
-.sec .cnt{font-size:12px;font-weight:700;color:var(--dim2);letter-spacing:.06em}
-.note{font-size:11.5px;color:var(--dim2);margin:-22px 0 26px var(--indent);letter-spacing:.02em}
+.sec{margin:72px 0 24px;display:flex;align-items:center;gap:16px}
+.sec h2{font-size:20px;font-weight:500;line-height:1.3;letter-spacing:-.01em;white-space:nowrap}
+.sec .ln{flex:1;height:1px;background:var(--line)}
+.note{font-size:13px;line-height:1.5;color:var(--dim2);margin:-18px 0 28px}
 
-/* ---------- per-year expander ---------- */
-.more{position:relative}
-.more>summary{list-style:none;cursor:pointer;position:relative;padding-bottom:22px;
-  display:flex;align-items:center}
-.more>summary::before{content:"";position:absolute;left:calc(-1 * var(--railw)/2 - 5px);top:11px;
-  width:10px;height:10px;border-radius:50%;background:var(--bg);
-  border:2px solid var(--line);z-index:1;transition:border-color .18s,background .18s}
-.more>summary:hover::before{border-color:var(--acc)}
-.more[open]>summary::before{background:var(--acc);border-color:var(--acc)}
-.moreu{display:inline-flex;align-items:center;gap:8px;background:var(--paper);
-  border:1px dashed #d3d5da;border-radius:999px;padding:7px 15px;
-  font-size:12.5px;font-weight:700;letter-spacing:.01em;color:var(--dim2);
-  transition:border-color .18s,color .18s,border-style .18s,box-shadow .18s}
-.more>summary:hover .moreu{border-style:solid;border-color:var(--acc);color:var(--acc);
-  box-shadow:0 6px 18px -14px rgba(91,61,245,.7)}
-.more[open]>summary .moreu{border-style:solid}
-.moreu .chev{font-size:9px;transition:transform .2s}
-.more[open]>summary .moreu .chev{transform:rotate(180deg)}
-.more>summary:focus-visible .moreu{outline:2px solid var(--acc);outline-offset:3px}
+/* ---------- year groups ---------- */
+.grp + .grp{margin-top:40px}
+.yr{font-size:14px;font-weight:600;line-height:1.3;letter-spacing:.08em;color:var(--dim);margin:0 0 12px}
+.cards{display:grid;gap:16px;min-width:0}
+
+/* ---------- per-year fold ---------- */
+.more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:600;color:var(--dim);padding:2px 0;transition:color .15s}
+.more>summary:hover{color:var(--acc)}
+.more>summary .chev{font-size:9px;transition:transform .2s}
+.more[open]>summary .chev{transform:rotate(180deg)}
+.more>summary:focus-visible{outline:2px solid var(--acc);outline-offset:4px;border-radius:4px}
 .more .lbl-open{display:none}
 .more[open] .lbl-shut{display:none}
 .more[open] .lbl-open{display:inline}
+.more .node{margin-top:16px}
+.more[open]>summary{margin-bottom:0}
 
-/* ---------- timeline ---------- */
-.tl{position:relative}
-.tl::before{content:"";position:absolute;left:calc(var(--yrw) + var(--railw)/2 - 1px);
-  top:12px;bottom:26px;width:2px;
-  background:linear-gradient(180deg,var(--acc),rgba(91,61,245,.18) 68%,transparent)}
-.grp{display:grid;grid-template-columns:var(--yrw) var(--railw) minmax(0,1fr);align-items:start}
-.grp.only .yr{padding-top:5px}
-.yr{grid-column:1;padding-top:19px;text-align:right;
-  font-size:21px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
-.cards{grid-column:3;min-width:0}
-.node{position:relative;padding-bottom:22px}
-.node::before{content:"";position:absolute;left:calc(-1 * var(--railw)/2 - 6px);top:24px;
-  width:12px;height:12px;
-  border-radius:50%;background:var(--acc);border:2.5px solid var(--acc);z-index:1;
-  transition:box-shadow .18s}
-.node.alt::before{background:var(--paper);border-color:var(--dim2)}
-.node:hover::before{background:var(--acc);border-color:var(--acc);
-  box-shadow:0 0 0 5px rgba(91,61,245,.14)}
-
-.card{display:grid;grid-template-columns:262px 1fr;gap:24px;align-items:start;
-  background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;
-  transition:box-shadow .22s,border-color .22s,transform .22s}
-.card:hover{border-color:#d8d9de;box-shadow:0 14px 34px -22px rgba(19,21,25,.34);transform:translateY(-2px)}
+/* ---------- cards ---------- */
+.card{display:grid;grid-template-columns:332px minmax(0,1fr);gap:28px;align-items:start;
+  background:var(--paper);border:1px solid var(--card-line);border-radius:12px;padding:20px;
+  transition:border-color .2s}
+.card:hover{border-color:#d9dae0}
 .fig{align-self:center;display:block;overflow:hidden;background:var(--paper);border-radius:10px}
-.thumb{display:block;width:100%;height:auto;max-height:250px;object-fit:contain;margin:0 auto}
-.vbadge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--acc);background:rgba(91,61,245,.08);border-radius:6px;padding:5px 9px}
-.node.alt .vbadge{color:var(--dim);background:#f1f1f4}
-.stars{display:inline-flex;align-items:center;gap:6px;margin-left:7px;vertical-align:middle;
-  font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--dim);
-  background:#f4f4f6;border:1px solid var(--line);border-radius:6px;padding:4px 9px}
-.stars i{color:#e8a317;font-size:10px}
-.ttl{font-size:17px;font-weight:750;line-height:1.3;letter-spacing:-.022em;margin:10px 0 7px}
+.thumb{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;margin:0 auto}
+.ttl{font-size:18px;font-weight:500;line-height:1.35;letter-spacing:-.005em;margin:0 0 6px}
 .ttl a:hover{color:var(--acc)}
-.authors{font-size:13px;color:var(--dim);line-height:1.6}
-.authors a{font-weight:500}
+.authors{font-size:14px;color:var(--dim);line-height:1.6}
 .authors a:hover{color:var(--acc)}
-.me{color:var(--ink);font-weight:800;letter-spacing:-.005em}
-.desc{font-size:13.8px;color:#4b505a;margin-top:9px}
-.lnks{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
-.lnk{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--acc);
-  border:1px solid rgba(91,61,245,.24);border-radius:999px;padding:6px 12px}
-.lnk:hover{background:var(--acc);color:#fff;border-color:var(--acc)}
-.lnk.off{color:var(--dim2);border-color:var(--line);border-style:dashed;pointer-events:none}
+.me{color:var(--ink);font-weight:600}
+.venue-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:10px}
+.vbadge,.stars{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;
+  letter-spacing:.02em;line-height:1;border-radius:6px;padding:5px 8px}
+.vbadge{color:var(--acc-ink);background:var(--acc-soft)}
+.stars{color:var(--dim);background:var(--well)}
+.stars i{color:#e8a317;font-size:11px}
+.desc{font-size:15px;line-height:1.6;color:#4b505a;margin-top:10px}
+.lnks{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.lnk{font-size:13px;font-weight:500;color:var(--body);background:var(--paper);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  transition:border-color .15s,color .15s}
+.lnk:hover{color:var(--acc);border-color:var(--acc)}
+.lnk.off{color:var(--dim2);border-style:dashed;pointer-events:none}
 .sep{display:none}
 
 /* ---------- open-source extras ---------- */
-.pi{font-size:13.5px;color:#4b505a;margin-top:11px;font-weight:600}
-.plist{margin-top:7px;display:grid;gap:7px;font-size:13.2px;color:#4b505a}
-.plist li{padding-left:15px;position:relative}
-.plist li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;
-  border-radius:50%;background:var(--acc2)}
-.plist a{color:var(--acc);font-weight:600}
-.plist a:hover{color:var(--acc2)}
-.cite{display:block;font-size:11.8px;color:var(--dim2);font-weight:400}
+.pi{font-size:14.5px;color:#4b505a;margin-top:16px}
+.plist{margin-top:6px;display:grid;gap:6px;font-size:14.5px;color:#4b505a}
+.plist li{padding-left:14px;position:relative}
+.plist li::before{content:"";position:absolute;left:0;top:.65em;width:5px;height:5px;
+  border-radius:50%;background:var(--dim2)}
+.cite{display:block;font-size:12.5px;color:var(--dim2)}
+.blogs{margin-top:14px}
+.blogs>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:600;color:var(--dim);transition:color .15s}
+.blogs>summary:hover{color:var(--acc)}
+.blogs>summary .chev{font-size:9px;transition:transform .2s}
+.blogs[open]>summary .chev{transform:rotate(180deg)}
+.blogs .pi{margin-top:8px}
 
-
-@media (max-width:960px){
-  :root{--yrw:70px;--railw:42px;--indent:112px}
-  .card{grid-template-columns:216px 1fr;gap:20px}
-  .yr{font-size:19px}
+@media (max-width:980px){
+  .card{grid-template-columns:280px minmax(0,1fr);gap:24px}
 }
-@media (max-width:820px){
-  :root{--indent:0px}
-  header{grid-template-columns:1fr;gap:22px}
-  .pf{width:132px;height:132px;order:-1;border-width:4px;margin-left:0}
-  .tl::before{left:5px;top:8px}
-  .grp{grid-template-columns:minmax(0,1fr)}
-  .yr{grid-column:1;padding:0 0 12px 28px;text-align:left;font-size:18px;
-    display:flex;align-items:baseline;gap:9px}
-  .cards{grid-column:1}
-  .node{padding-left:28px}
-  .node::before{left:0;top:24px}
-  .card{grid-template-columns:1fr;gap:14px}
-  .fig{max-width:360px;width:100%}
+@media (max-width:760px){
+  header{grid-template-columns:1fr;gap:24px;padding-top:56px}
+  .pf{--pf:128px;order:-1}
+  .card{grid-template-columns:minmax(0,1fr);gap:16px}
+  .fig{max-width:420px;width:100%}
+  .sec{margin-top:56px}
 }
 @media (max-width:520px){
-  .wrap{padding:0 16px 80px}
-  header{padding-top:44px}
-  .sec{gap:10px}
-  .sec .ln{display:none}
+  .wrap{padding:0 16px 72px}
+  header{padding-top:40px}
+  .card{padding:16px}
 }
 """
 
@@ -175,23 +153,22 @@ def _stars(n):
             '<i class="fas fa-star" aria-hidden="true"></i>%s</span>' % ("{:,}".format(n), label))
 
 
-def _node(p, base, alt=False, badge=None):
-    """One card hanging off the timeline spine."""
+def _node(p, base, badge=None):
+    """One publication / project card."""
     return """
-<div class="node%(alt)s">
+<div class="node">
   <article class="card">
     <a class="fig" href="%(href)s" target="_blank" rel="noopener">%(media)s</a>
     <div>
-      <span class="vbadge">%(v)s</span>%(stars)s
       <h3 class="ttl"><a href="%(href)s" target="_blank" rel="noopener">%(title)s</a></h3>
       %(authors)s
+      <div class="venue-row"><span class="vbadge">%(v)s</span>%(stars)s</div>
       <p class="desc">%(desc)s</p>
       <div class="lnks">%(links)s</div>
       %(extra)s
     </div>
   </article>
 </div>""" % {
-        "alt": " alt" if alt else "",
         "href": p["href"], "media": media_html(p, base),
         "v": badge or venue_year(p, short=True), "stars": _stars(p.get("stars")),
         "title": p["title"],
@@ -200,18 +177,23 @@ def _node(p, base, alt=False, badge=None):
     }
 
 
+CHEV = '<i class="chev fas fa-chevron-down" aria-hidden="true"></i>'
+
+
 def _project_extra(p):
     if "contrib" not in p:
         return ""
     out = ['<p class="pi">%s</p>' % p["contrib_intro"], '<ul class="plist">']
     out += ['<li>%s</li>' % c for c in p["contrib"]]
     out.append('</ul>')
+    out.append('<details class="blogs"><summary>Tutorial blogs (%d) %s</summary>'
+               % (len(p["blog"]), CHEV))
     out.append('<p class="pi">%s</p>' % p["blog_intro"])
     out.append('<ul class="plist">')
     for title, url, outlet, date in p["blog"]:
         out.append('<li><a href="%s" target="_blank" rel="noopener">%s</a>'
                    '<span class="cite"><em>%s</em>, %s</span></li>' % (url, title, outlet, date))
-    out.append('</ul>')
+    out.append('</ul></details>')
     return "\n".join(out)
 
 
@@ -220,71 +202,61 @@ def _plural(n):
 
 
 def publications(base):
-    """One spine, grouped by year: each year's selected papers, then its folded ones."""
+    """Grouped by year: each year's selected papers, then its folded ones."""
     groups = OrderedDict()
     for p in SELECTED:
         groups.setdefault(p["year"], {"sel": [], "alt": []})["sel"].append(p)
     for p in OTHER:
         groups.setdefault(p["year"], {"sel": [], "alt": []})["alt"].append(p)
 
-    out = ['<div class="tl">']
+    out = []
     for year in sorted(groups, reverse=True):
         g = groups[year]
         cards = [_node(p, base) for p in g["sel"]]
         if g["alt"]:
             # "N more" only reads right when something is already shown above it
-            shut = ('%d more from %s' % (len(g["alt"]), year) if g["sel"]
-                    else 'Show %d %s' % (len(g["alt"]), _plural(len(g["alt"]))))
+            n = len(g["alt"])
+            shut = ('%d more from %s' % (n, year) if g["sel"]
+                    else 'Show %d %s' % (n, _plural(n)))
             cards.append(
                 '<details class="more">'
-                '<summary><span class="moreu">'
-                '<span class="lbl-shut">%s</span>'
-                '<span class="lbl-open">Show fewer</span>'
-                '<i class="chev fas fa-chevron-down" aria-hidden="true"></i>'
-                '</span></summary>%s</details>'
-                % (shut, "".join(_node(p, base, alt=True) for p in g["alt"])))
-        out.append(
-            '<div class="grp%s">'
-            '<div class="yr">%s</div>'
-            '<div class="cards">%s</div>'
-            '</div>'
-            % ("" if g["sel"] else " only", year, "".join(cards)))
-    out.append('</div>')
+                '<summary><span class="lbl-shut">%s</span>'
+                '<span class="lbl-open">Show fewer</span>%s</summary>%s</details>'
+                % (shut, CHEV, "".join(_node(p, base) for p in g["alt"])))
+        out.append('<section class="grp"><h3 class="yr">%s</h3><div class="cards">%s</div></section>'
+                   % (year, "".join(cards)))
     return "\n".join(out)
 
 
 def build(base=""):
-    prj = ('<div class="tl"><div class="grp"><div class="yr"></div><div class="cards">%s'
-           '</div></div></div>' % "".join(_node(p, base, badge="GitHub") for p in PROJECTS))
-    bk = ('<div class="tl"><div class="grp"><div class="yr"></div><div class="cards">%s'
-          '</div></div></div>' % "".join(_node(p, base) for p in BOOK))
+    prj = '<div class="cards">%s</div>' % "".join(_node(p, base, badge="GitHub") for p in PROJECTS)
+    bk = '<div class="cards">%s</div>' % "".join(_node(p, base) for p in BOOK)
 
     body = """
 <div class="wrap">
 <header>
   <div>
     <h1>%(name)s</h1>
+    <div class="bio">%(bio)s</div>
     <nav class="social">%(links)s</nav>
   </div>
   <img class="pf" src="%(base)s%(photo)s" alt="Zechu (Steven) Li" width="256" height="256">
 </header>
-<div class="bio">%(bio)s</div>
 
 <main>
-  <div class="sec"><h2>Publications</h2><span class="ln"></span><span class="cnt">%(npub)d</span></div>
+  <div class="sec"><h2>Publications</h2><span class="ln"></span></div>
   <p class="note">* equal contribution</p>
   %(tl)s
 
-  <div class="sec"><h2>Open Source Projects</h2><span class="ln"></span><span class="cnt">%(nprj)d</span></div>
+  <div class="sec"><h2>Open Source Projects</h2><span class="ln"></span></div>
   %(prj)s
 
-  <div class="sec"><h2>Book Chapter</h2><span class="ln"></span><span class="cnt">1</span></div>
+  <div class="sec"><h2>Book Chapter</h2><span class="ln"></span></div>
   %(bk)s
 </main>
 </div>
 """ % {"base": base, "name": PROFILE["name"], "photo": PROFILE["photo"],
        "links": profile_links("", "", icons=True), "bio": bio_paras("bio-p"),
-       "tl": publications(base), "prj": prj, "bk": bk,
-       "npub": len(SELECTED) + len(OTHER), "nprj": len(PROJECTS)}
+       "tl": publications(base), "prj": prj, "bk": bk}
 
     return page(CSS, body, base, fonts=FONTS, theme="#fbfbfc", icons=True)

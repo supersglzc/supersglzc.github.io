@@ -9,7 +9,7 @@
 <meta name="description" content="Zechu (Steven) Li — PhD student at PEARL Lab. Reinforcement learning, robotics, and scalable systems.">
 <link rel="icon" type="image/png" sizes="32x32" href="files/favicon-32.png">
 <link rel="icon" type="image/png" sizes="256x256" href="files/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
@@ -27,148 +27,126 @@ details summary::-webkit-details-marker{display:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 :root{
-  --bg:#fbfbfc; --paper:#fff; --ink:#131519; --dim:#5d626c; --dim2:#9ba0aa;
-  --line:#e6e7ea; --acc:#5b3df5; --acc2:#e0397a;
-  --yrw:92px;       /* column 1: the year label   */
-  --railw:52px;     /* column 2: the timeline rail */
-  --indent:144px;   /* = yrw + railw: everything outside the timeline lines
-                       up with the cards, leaving the rail its own margin */
+  --bg:#fbfbfc; --paper:#fff; --ink:#131519; --body:#3a3f48; --dim:#5d626c; --dim2:#9ba0aa;
+  --line:#e6e7ea; --card-line:#ececf0; --well:#f5f5f7;
+  --acc:#5b3df5; --acc-ink:#4a30d6; --acc-soft:rgba(91,61,245,.08); --acc-line:rgba(91,61,245,.38);
+  --pf:224px;
+  --c-violet:#6d4bff;
 }
-body{background:var(--bg);color:var(--ink);font:400 15.5px/1.68 "Manrope",system-ui,sans-serif;
+body{background:
+    radial-gradient(620px 420px at 12% -6%,rgba(109,75,255,.13),transparent 70%),
+    radial-gradient(560px 380px at 58% -12%,rgba(47,124,246,.10),transparent 70%),
+    radial-gradient(520px 420px at 96% 4%,rgba(232,69,124,.10),transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;color:var(--ink);font:400 16.5px/1.7 "Google Sans",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased}
 a{text-decoration:none}
-.wrap{max-width:1060px;margin:0 auto;padding:0 26px 100px}
-.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wrap{max-width:1020px;margin:0 auto;padding:0 28px 96px}
+
+/* inline links: accent text, no underline */
+.bio a,.plist a{color:var(--acc);font-weight:500;transition:color .15s}
+.bio a:hover,.plist a:hover{color:var(--acc-ink)}
 
 /* ---------- header ---------- */
-header,.bio,.sec{margin-left:var(--indent)}
-header{padding:76px 0 0;display:grid;grid-template-columns:1fr 212px;gap:44px;align-items:center}
-.pf{width:196px;height:196px;object-fit:cover;border-radius:50%;background:var(--paper);
-  border:5px solid var(--paper);box-shadow:0 10px 34px -14px rgba(19,21,25,.32);margin-left:auto}
-h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-height:1.05}
-.social{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
-.social a{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
-  border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 14px;
-  transition:border-color .18s,color .18s,transform .18s}
-.social a:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
-.social i{color:var(--dim2);font-size:12.5px}
-.social a:hover i{color:var(--acc)}
-.bio{margin-top:34px;display:grid;gap:14px;max-width:72ch;color:#3a3f48}
-.bio a{color:var(--acc);border-bottom:1px solid rgba(91,61,245,.25);font-weight:600}
-.bio a:hover{color:var(--acc2);border-color:var(--acc2)}
+header{padding:96px 0 0;display:grid;grid-template-columns:minmax(0,1fr) var(--pf);
+  gap:56px;align-items:start}
+.pf{width:var(--pf);height:var(--pf);object-fit:cover;border-radius:50%;background:var(--well);
+  box-shadow:0 0 0 1px rgba(19,21,25,.06),0 14px 32px -20px rgba(19,21,25,.45)}
+h1{font-size:clamp(34px,5.4vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1.1}
+.social{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px}
+.social a{--b:var(--c-violet);display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:500;
+  color:var(--ink);border:1px solid color-mix(in srgb,var(--b) 26%,transparent);
+  background:var(--paper);border-radius:999px;padding:7px 14px;
+  transition:background .15s,border-color .15s,color .15s,transform .15s}
+.social a[href*="scholar.google"]{--b:#4285f4}
+.social a[href*="github.com"],.social a[href*="x.com"]{--b:#1f2328;border-color:var(--line)}
+.social a[href*="linkedin.com"]{--b:#0a66c2}
+.social a:hover{background:var(--b);border-color:var(--b);color:#fff;transform:translateY(-1px)}
+.social i{color:var(--b);font-size:14px;width:14px;text-align:center;transition:color .15s}
+.social i.ai{font-size:16px}
+.social a:hover i{color:#fff}
+.bio{margin-top:20px;display:grid;gap:16px;color:var(--body)}
 
 /* ---------- section headings ---------- */
-.sec{margin:74px 0 30px var(--indent);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.sec h2{font-size:19px;font-weight:800;letter-spacing:-.028em}
-.sec .ln{flex:1;height:1px;background:var(--line);min-width:20px}
-.sec .cnt{font-size:12px;font-weight:700;color:var(--dim2);letter-spacing:.06em}
-.note{font-size:11.5px;color:var(--dim2);margin:-22px 0 26px var(--indent);letter-spacing:.02em}
+.sec{margin:72px 0 24px;display:flex;align-items:center;gap:16px}
+.sec h2{font-size:20px;font-weight:500;line-height:1.3;letter-spacing:-.01em;white-space:nowrap}
+.sec .ln{flex:1;height:1px;background:var(--line)}
+.note{font-size:13px;line-height:1.5;color:var(--dim2);margin:-18px 0 28px}
 
-/* ---------- per-year expander ---------- */
-.more{position:relative}
-.more>summary{list-style:none;cursor:pointer;position:relative;padding-bottom:22px;
-  display:flex;align-items:center}
-.more>summary::before{content:"";position:absolute;left:calc(-1 * var(--railw)/2 - 5px);top:11px;
-  width:10px;height:10px;border-radius:50%;background:var(--bg);
-  border:2px solid var(--line);z-index:1;transition:border-color .18s,background .18s}
-.more>summary:hover::before{border-color:var(--acc)}
-.more[open]>summary::before{background:var(--acc);border-color:var(--acc)}
-.moreu{display:inline-flex;align-items:center;gap:8px;background:var(--paper);
-  border:1px dashed #d3d5da;border-radius:999px;padding:7px 15px;
-  font-size:12.5px;font-weight:700;letter-spacing:.01em;color:var(--dim2);
-  transition:border-color .18s,color .18s,border-style .18s,box-shadow .18s}
-.more>summary:hover .moreu{border-style:solid;border-color:var(--acc);color:var(--acc);
-  box-shadow:0 6px 18px -14px rgba(91,61,245,.7)}
-.more[open]>summary .moreu{border-style:solid}
-.moreu .chev{font-size:9px;transition:transform .2s}
-.more[open]>summary .moreu .chev{transform:rotate(180deg)}
-.more>summary:focus-visible .moreu{outline:2px solid var(--acc);outline-offset:3px}
+/* ---------- year groups ---------- */
+.grp + .grp{margin-top:40px}
+.yr{font-size:14px;font-weight:600;line-height:1.3;letter-spacing:.08em;color:var(--dim);margin:0 0 12px}
+.cards{display:grid;gap:16px;min-width:0}
+
+/* ---------- per-year fold ---------- */
+.more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:600;color:var(--dim);padding:2px 0;transition:color .15s}
+.more>summary:hover{color:var(--acc)}
+.more>summary .chev{font-size:9px;transition:transform .2s}
+.more[open]>summary .chev{transform:rotate(180deg)}
+.more>summary:focus-visible{outline:2px solid var(--acc);outline-offset:4px;border-radius:4px}
 .more .lbl-open{display:none}
 .more[open] .lbl-shut{display:none}
 .more[open] .lbl-open{display:inline}
+.more .node{margin-top:16px}
+.more[open]>summary{margin-bottom:0}
 
-/* ---------- timeline ---------- */
-.tl{position:relative}
-.tl::before{content:"";position:absolute;left:calc(var(--yrw) + var(--railw)/2 - 1px);
-  top:12px;bottom:26px;width:2px;
-  background:linear-gradient(180deg,var(--acc),rgba(91,61,245,.18) 68%,transparent)}
-.grp{display:grid;grid-template-columns:var(--yrw) var(--railw) minmax(0,1fr);align-items:start}
-.grp.only .yr{padding-top:5px}
-.yr{grid-column:1;padding-top:19px;text-align:right;
-  font-size:21px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
-.cards{grid-column:3;min-width:0}
-.node{position:relative;padding-bottom:22px}
-.node::before{content:"";position:absolute;left:calc(-1 * var(--railw)/2 - 6px);top:24px;
-  width:12px;height:12px;
-  border-radius:50%;background:var(--acc);border:2.5px solid var(--acc);z-index:1;
-  transition:box-shadow .18s}
-.node.alt::before{background:var(--paper);border-color:var(--dim2)}
-.node:hover::before{background:var(--acc);border-color:var(--acc);
-  box-shadow:0 0 0 5px rgba(91,61,245,.14)}
-
-.card{display:grid;grid-template-columns:262px 1fr;gap:24px;align-items:start;
-  background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;
-  transition:box-shadow .22s,border-color .22s,transform .22s}
-.card:hover{border-color:#d8d9de;box-shadow:0 14px 34px -22px rgba(19,21,25,.34);transform:translateY(-2px)}
+/* ---------- cards ---------- */
+.card{display:grid;grid-template-columns:332px minmax(0,1fr);gap:28px;align-items:start;
+  background:var(--paper);border:1px solid var(--card-line);border-radius:12px;padding:20px;
+  transition:border-color .2s}
+.card:hover{border-color:#d9dae0}
 .fig{align-self:center;display:block;overflow:hidden;background:var(--paper);border-radius:10px}
-.thumb{display:block;width:100%;height:auto;max-height:250px;object-fit:contain;margin:0 auto}
-.vbadge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--acc);background:rgba(91,61,245,.08);border-radius:6px;padding:5px 9px}
-.node.alt .vbadge{color:var(--dim);background:#f1f1f4}
-.stars{display:inline-flex;align-items:center;gap:6px;margin-left:7px;vertical-align:middle;
-  font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--dim);
-  background:#f4f4f6;border:1px solid var(--line);border-radius:6px;padding:4px 9px}
-.stars i{color:#e8a317;font-size:10px}
-.ttl{font-size:17px;font-weight:750;line-height:1.3;letter-spacing:-.022em;margin:10px 0 7px}
+.thumb{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;margin:0 auto}
+.ttl{font-size:18px;font-weight:500;line-height:1.35;letter-spacing:-.005em;margin:0 0 6px}
 .ttl a:hover{color:var(--acc)}
-.authors{font-size:13px;color:var(--dim);line-height:1.6}
-.authors a{font-weight:500}
+.authors{font-size:14px;color:var(--dim);line-height:1.6}
 .authors a:hover{color:var(--acc)}
-.me{color:var(--ink);font-weight:800;letter-spacing:-.005em}
-.desc{font-size:13.8px;color:#4b505a;margin-top:9px}
-.lnks{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
-.lnk{font-size:12px;font-weight:700;letter-spacing:.02em;color:var(--acc);
-  border:1px solid rgba(91,61,245,.24);border-radius:999px;padding:6px 12px}
-.lnk:hover{background:var(--acc);color:#fff;border-color:var(--acc)}
-.lnk.off{color:var(--dim2);border-color:var(--line);border-style:dashed;pointer-events:none}
+.me{color:var(--ink);font-weight:600}
+.venue-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:10px}
+.vbadge,.stars{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;
+  letter-spacing:.02em;line-height:1;border-radius:6px;padding:5px 8px}
+.vbadge{color:var(--acc-ink);background:var(--acc-soft)}
+.stars{color:var(--dim);background:var(--well)}
+.stars i{color:#e8a317;font-size:11px}
+.desc{font-size:15px;line-height:1.6;color:#4b505a;margin-top:10px}
+.lnks{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.lnk{font-size:13px;font-weight:500;color:var(--body);background:var(--paper);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  transition:border-color .15s,color .15s}
+.lnk:hover{color:var(--acc);border-color:var(--acc)}
+.lnk.off{color:var(--dim2);border-style:dashed;pointer-events:none}
 .sep{display:none}
 
 /* ---------- open-source extras ---------- */
-.pi{font-size:13.5px;color:#4b505a;margin-top:11px;font-weight:600}
-.plist{margin-top:7px;display:grid;gap:7px;font-size:13.2px;color:#4b505a}
-.plist li{padding-left:15px;position:relative}
-.plist li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;
-  border-radius:50%;background:var(--acc2)}
-.plist a{color:var(--acc);font-weight:600}
-.plist a:hover{color:var(--acc2)}
-.cite{display:block;font-size:11.8px;color:var(--dim2);font-weight:400}
+.pi{font-size:14.5px;color:#4b505a;margin-top:16px}
+.plist{margin-top:6px;display:grid;gap:6px;font-size:14.5px;color:#4b505a}
+.plist li{padding-left:14px;position:relative}
+.plist li::before{content:"";position:absolute;left:0;top:.65em;width:5px;height:5px;
+  border-radius:50%;background:var(--dim2)}
+.cite{display:block;font-size:12.5px;color:var(--dim2)}
+.blogs{margin-top:14px}
+.blogs>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;font-weight:600;color:var(--dim);transition:color .15s}
+.blogs>summary:hover{color:var(--acc)}
+.blogs>summary .chev{font-size:9px;transition:transform .2s}
+.blogs[open]>summary .chev{transform:rotate(180deg)}
+.blogs .pi{margin-top:8px}
 
-
-@media (max-width:960px){
-  :root{--yrw:70px;--railw:42px;--indent:112px}
-  .card{grid-template-columns:216px 1fr;gap:20px}
-  .yr{font-size:19px}
+@media (max-width:980px){
+  .card{grid-template-columns:280px minmax(0,1fr);gap:24px}
 }
-@media (max-width:820px){
-  :root{--indent:0px}
-  header{grid-template-columns:1fr;gap:22px}
-  .pf{width:132px;height:132px;order:-1;border-width:4px;margin-left:0}
-  .tl::before{left:5px;top:8px}
-  .grp{grid-template-columns:minmax(0,1fr)}
-  .yr{grid-column:1;padding:0 0 12px 28px;text-align:left;font-size:18px;
-    display:flex;align-items:baseline;gap:9px}
-  .cards{grid-column:1}
-  .node{padding-left:28px}
-  .node::before{left:0;top:24px}
-  .card{grid-template-columns:1fr;gap:14px}
-  .fig{max-width:360px;width:100%}
+@media (max-width:760px){
+  header{grid-template-columns:1fr;gap:24px;padding-top:56px}
+  .pf{--pf:128px;order:-1}
+  .card{grid-template-columns:minmax(0,1fr);gap:16px}
+  .fig{max-width:420px;width:100%}
+  .sec{margin-top:56px}
 }
 @media (max-width:520px){
-  .wrap{padding:0 16px 80px}
-  header{padding-top:44px}
-  .sec{gap:10px}
-  .sec .ln{display:none}
+  .wrap{padding:0 16px 72px}
+  header{padding-top:40px}
+  .card{padding:16px}
 }
 </style>
 </head>
@@ -178,26 +156,25 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
 <header>
   <div>
     <h1>Zechu (Steven) Li</h1>
+    <div class="bio"><p class="bio-p">I am a PhD student at <a href="https://pearl-lab.com/" target="_blank" rel="noopener">PEARL Lab</a>, advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a> since October 2024, and currently a Student Researcher at <a href="https://deepmind.google/" target="_blank" rel="noopener">Google DeepMind</a> in London. Previously, I was a visiting researcher at <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">MIT CSAIL</a> with Prof. <a href="http://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a> and interned at <a href="https://www.idea.edu.cn/" target="_blank" rel="noopener">IDEA Research</a>.</p>
+<p class="bio-p">My research focuses on robot learning and reinforcement learning, with particular interests in scalable simulation, dexterous and humanoid manipulation, and agentic systems for automating robot learning.</p>
+<p class="bio-p">I received my bachelor&rsquo;s degree in computer science from <a href="https://www.columbia.edu/" target="_blank" rel="noopener">Columbia University</a> in May 2022. During my undergraduate studies, I was fortunate to work with Prof. <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a>, Prof. <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&amp;hl=en" target="_blank" rel="noopener">Anwar Walid</a>, and Prof. <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a>.</p></div>
     <nav class="social"><a class="" href="mailto:zl2993@columbia.edu"><i class="far fa-envelope" aria-hidden="true"></i> Email</a><a class="" href="https://scholar.google.com/citations?user=FI_6by0AAAAJ&hl=en" target="_blank" rel="noopener"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a><a class="" href="https://github.com/supersglzc" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a><a class="" href="https://x.com/softraeh" target="_blank" rel="noopener"><i class="fab fa-x-twitter" aria-hidden="true"></i> X</a><a class="" href="https://www.linkedin.com/in/zechu-li-66a7741b3/" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></nav>
   </div>
   <img class="pf" src="files/scholar_photo.jpg" alt="Zechu (Steven) Li" width="256" height="256">
 </header>
-<div class="bio"><p class="bio-p">I am a PhD student at <a href="https://pearl-lab.com/" target="_blank" rel="noopener">PEARL Lab</a>, advised by Prof. <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a> since October 2024, and currently a Student Researcher at <a href="https://deepmind.google/" target="_blank" rel="noopener">Google DeepMind</a> in London. Previously, I was a visiting researcher at <a href="https://www.csail.mit.edu/" target="_blank" rel="noopener">MIT CSAIL</a> with Prof. <a href="http://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a> and interned at <a href="https://www.idea.edu.cn/" target="_blank" rel="noopener">IDEA Research</a>.</p>
-<p class="bio-p">My research focuses on robot learning and reinforcement learning, with particular interests in scalable simulation, dexterous and humanoid manipulation, and agentic systems for automating robot learning.</p>
-<p class="bio-p">I received my bachelor&rsquo;s degree in computer science from <a href="https://www.columbia.edu/" target="_blank" rel="noopener">Columbia University</a> in May 2022. During my undergraduate studies, I was fortunate to work with Prof. <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a>, Prof. <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&amp;hl=en" target="_blank" rel="noopener">Anwar Walid</a>, and Prof. <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a>.</p></div>
 
 <main>
-  <div class="sec"><h2>Publications</h2><span class="ln"></span><span class="cnt">16</span></div>
+  <div class="sec"><h2>Publications</h2><span class="ln"></span></div>
   <p class="note">* equal contribution</p>
-  <div class="tl">
-<div class="grp"><div class="yr">2026</div><div class="cards">
+  <section class="grp"><h3 class="yr">2026</h3><div class="cards">
 <div class="node">
   <article class="card">
     <a class="fig" href="https://arxiv.org/abs/2609.32069" target="_blank" rel="noopener"><video class="thumb" src="images/find_demo.mp4" autoplay muted loop playsinline preload="metadata"></video></a>
     <div>
-      <span class="vbadge">arXiv 2026</span>
       <h3 class="ttl"><a href="https://arxiv.org/abs/2609.32069" target="_blank" rel="noopener">Find Something You Can't Do: Agentic Real-World Reinforcement Learning for Self-Improving VLA Models</a></h3>
       <p class="authors"><span class="au">Yuan Fang*</span>, <span class="me">Zechu Li*</span>, <span class="au">Haolei Tong</span>, <a href="https://puzeliu.github.io/" target="_blank" rel="noopener">Puze Liu</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <div class="venue-row"><span class="vbadge">arXiv 2026</span></div>
       <p class="desc">Enables VLA self-improvement through autonomous real-world practice, adaptive task selection, and self-evaluation.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2609.32069" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://fangyzzz.github.io/FIND.github.io/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/FangYzzz/FIND" target="_blank" rel="noopener">code</a></div>
       
@@ -208,9 +185,9 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
   <article class="card">
     <a class="fig" href="https://arxiv.org/abs/2606.08610" target="_blank" rel="noopener"><img class="thumb" src="images/harbor_demo.webp" alt="HARBOR" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">CoRL 2026</span>
       <h3 class="ttl"><a href="https://arxiv.org/abs/2606.08610" target="_blank" rel="noopener">HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning</a></h3>
       <p class="authors"><span class="me">Zechu Li</span>, <a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin</a>, <a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu</a>, <a href="https://puzeliu.github.io/" target="_blank" rel="noopener">Puze Liu</a>, <a href="https://pearl-lab.com/vignesh-prasad/" target="_blank" rel="noopener">Vignesh Prasad</a>, <a href="https://www.caidas.uni-wuerzburg.de/rlcdm/team/carlo-deramo/" target="_blank" rel="noopener">Carlo D'Eramo</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <div class="venue-row"><span class="vbadge">CoRL 2026</span></div>
       <p class="desc">Automates the end-to-end robot RL workflow, from package installation to policy tuning.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2606.08610" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://supersglzc.github.io/harbor-rl/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/supersglzc/harbor-rl" target="_blank" rel="noopener">code</a></div>
       
@@ -221,49 +198,49 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
   <article class="card">
     <a class="fig" href="https://arxiv.org/abs/2606.22471" target="_blank" rel="noopener"><img class="thumb" src="images/iros.jpg" alt="Scalable Multi-Task Data Generation via Reinforcement Learning for Language-Conditioned Bimanual Dexterous Manipulation" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">IROS 2026</span>
       <h3 class="ttl"><a href="https://arxiv.org/abs/2606.22471" target="_blank" rel="noopener">Scalable Multi-Task Data Generation via Reinforcement Learning for Language-Conditioned Bimanual Dexterous Manipulation</a></h3>
       <p class="authors"><span class="me">Zechu Li</span>, <a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin</a>, <a href="https://puzeliu.github.io/" target="_blank" rel="noopener">Puze Liu</a>, <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters" target="_blank" rel="noopener">Jan Peters</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <div class="venue-row"><span class="vbadge">IROS 2026</span></div>
       <p class="desc">Generates multi-task demonstrations for language-conditioned bimanual manipulation via RL.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2606.22471" target="_blank" rel="noopener">paper</a></div>
       
     </div>
   </article>
-</div><details class="more"><summary><span class="moreu"><span class="lbl-shut">2 more from 2026</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></span></summary>
-<div class="node alt">
+</div>
+<div class="node">
   <article class="card">
     <a class="fig" href="https://arxiv.org/abs/2605.11665v1" target="_blank" rel="noopener"><img class="thumb" src="images/nautilus.png" alt="Nautilus" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">NeurIPS 2026</span>
       <h3 class="ttl"><a href="https://arxiv.org/abs/2605.11665v1" target="_blank" rel="noopener">Nautilus: From One Prompt to Plug-and-Play Robot Learning</a></h3>
       <p class="authors"><a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin*</a>, <a href="https://ventusff.github.io/" target="_blank" rel="noopener">Jianfei Guo*</a>, <a href="https://xiaogangjia.github.io/Personal_Website/" target="_blank" rel="noopener">Xiaogang Jia</a>, <a href="https://yudeng321.github.io/" target="_blank" rel="noopener">Yu Deng</a>, <span class="me">Zechu Li</span>, <a href="https://www.linkedin.com/in/han-liu-697a442aa/" target="_blank" rel="noopener">Han Liu</a>, <span class="au">Weiran Liao</span>, <a href="https://pearl-lab.com/vignesh-prasad/" target="_blank" rel="noopener">Vignesh Prasad</a>, <a href="https://www.linkedin.com/in/mathias-franzius-86b17b2b4/" target="_blank" rel="noopener">Mathias Franzius</a>, <a href="https://alr.iar.kit.edu/21_65.php" target="_blank" rel="noopener">Gerhard Neumann</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <div class="venue-row"><span class="vbadge">NeurIPS 2026</span></div>
       <p class="desc">Turns a single prompt into reproduction, evaluation, fine-tuning, and deployment workflows.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2605.11665v1" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://yufengjin.github.io/nautilus/" target="_blank" rel="noopener">website</a></div>
       
     </div>
   </article>
-</div>
-<div class="node alt">
+</div><details class="more"><summary><span class="lbl-shut">1 more from 2026</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></summary>
+<div class="node">
   <article class="card">
     <a class="fig" href="https://arxiv.org/abs/2511.01501" target="_blank" rel="noopener"><img class="thumb" src="images/se3poseflow.webp" alt="SE(3)-PoseFlow" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">ICRA 2026</span>
       <h3 class="ttl"><a href="https://arxiv.org/abs/2511.01501" target="_blank" rel="noopener">SE(3)-PoseFlow: Estimating 6D Pose Distributions for Uncertainty-Aware Robotic Manipulation</a></h3>
       <p class="authors"><a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin</a>, <a href="https://niklasfunk.com/" target="_blank" rel="noopener">Niklas Funk</a>, <a href="https://pearl-lab.com/vignesh-prasad/" target="_blank" rel="noopener">Vignesh Prasad</a>, <span class="me">Zechu Li</span>, <a href="https://www.linkedin.com/in/mathias-franzius-86b17b2b4/" target="_blank" rel="noopener">Mathias Franzius</a>, <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters" target="_blank" rel="noopener">Jan Peters</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <div class="venue-row"><span class="vbadge">ICRA 2026</span></div>
       <p class="desc">Estimates full 6D pose distributions via flow matching on SE(3) for uncertainty-aware manipulation.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2511.01501" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://yufengjin.github.io/projects/se3-poseflow/" target="_blank" rel="noopener">website</a></div>
       
     </div>
   </article>
-</div></details></div></div>
-<div class="grp"><div class="yr">2025</div><div class="cards">
+</div></details></div></section>
+<section class="grp"><h3 class="yr">2025</h3><div class="cards">
 <div class="node">
   <article class="card">
     <a class="fig" href="https://arxiv.org/abs/2505.05287" target="_blank" rel="noopener"><video class="thumb" src="images/symdex.mp4" autoplay muted loop playsinline preload="metadata"></video></a>
     <div>
-      <span class="vbadge">CoRL 2025</span>
       <h3 class="ttl"><a href="https://arxiv.org/abs/2505.05287" target="_blank" rel="noopener">Morphologically Symmetric Reinforcement Learning for Ambidextrous Bimanual Manipulation</a></h3>
       <p class="authors"><span class="me">Zechu Li</span>, <a href="https://yufengjin.github.io/" target="_blank" rel="noopener">Yufeng Jin</a>, <a href="https://daniel-ordonez-apraez.netlify.app/" target="_blank" rel="noopener">Daniel Ordoñez Apraez</a>, <a href="https://www.iit.it/people-details/-/people/claudio-semini" target="_blank" rel="noopener">Claudio Semini</a>, <a href="https://puzeliu.github.io/" target="_blank" rel="noopener">Puze Liu</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <div class="venue-row"><span class="vbadge">CoRL 2025</span></div>
       <p class="desc">Exploits morphological symmetry to learn ambidextrous bimanual manipulation.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2505.05287" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://supersglzc.github.io/projects/symdex/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/supersglzc/symdex" target="_blank" rel="noopener">code</a></div>
       
@@ -274,23 +251,23 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
   <article class="card">
     <a class="fig" href="https://arxiv.org/abs/2502.02316" target="_blank" rel="noopener"><img class="thumb" src="images/DIME.png" alt="DIME" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">ICML 2025</span>
       <h3 class="ttl"><a href="https://arxiv.org/abs/2502.02316" target="_blank" rel="noopener">DIME: Diffusion-Based Maximum Entropy Reinforcement Learning</a></h3>
       <p class="authors"><a href="https://onur4229.github.io/" target="_blank" rel="noopener">Onur Celik</a>, <span class="me">Zechu Li</span>, <a href="https://denisbless.github.io/" target="_blank" rel="noopener">Denis Blessing</a>, <a href="https://brucegeli.github.io/" target="_blank" rel="noopener">Ge Li</a>, <a href="https://www.ias.informatik.tu-darmstadt.de/Team/DanielPalenicek" target="_blank" rel="noopener">Daniel Palenicek</a>, <a href="https://www.ias.informatik.tu-darmstadt.de/Team/JanPeters" target="_blank" rel="noopener">Jan Peters</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a>, <a href="https://alr.iar.kit.edu/21_65.php" target="_blank" rel="noopener">Gerhard Neumann</a></p>
+      <div class="venue-row"><span class="vbadge">ICML 2025</span></div>
       <p class="desc">Trains diffusion policies with maximum-entropy RL, reaching state-of-the-art returns.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2502.02316" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://alrhub.github.io/dime-website/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/ALRhub/DIME" target="_blank" rel="noopener">code</a></div>
       
     </div>
   </article>
-</div></div></div>
-<div class="grp"><div class="yr">2024</div><div class="cards">
+</div></div></section>
+<section class="grp"><h3 class="yr">2024</h3><div class="cards">
 <div class="node">
   <article class="card">
-    <a class="fig" href="https://arxiv.org/abs/2406.00681" target="_blank" rel="noopener"><img class="thumb" src="images/ddiffpg.png" alt="Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient" loading="lazy" decoding="async"></a>
+    <a class="fig" href="https://arxiv.org/abs/2406.00681" target="_blank" rel="noopener"><img class="thumb" src="images/ddiffpg_grid.webp" alt="Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">NeurIPS 2024</span>
       <h3 class="ttl"><a href="https://arxiv.org/abs/2406.00681" target="_blank" rel="noopener">Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient</a></h3>
       <p class="authors"><span class="me">Zechu Li</span>, <span class="au">Rickmer Krohn</span>, <a href="https://taochenshh.github.io/" target="_blank" rel="noopener">Tao Chen</a>, <a href="https://anuragajay.github.io/" target="_blank" rel="noopener">Anurag Ajay</a>, <a href="https://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a>, <a href="https://pearl-lab.com/people/georgia-chalvatzaki/" target="_blank" rel="noopener">Georgia Chalvatzaki</a></p>
+      <div class="venue-row"><span class="vbadge">NeurIPS 2024</span></div>
       <p class="desc">Learns multimodal diffusion policies from scratch, without demonstrations.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/abs/2406.00681" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://supersglzc.github.io/projects/ddiffpg/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/supersglzc/ddiffpg" target="_blank" rel="noopener">code</a></div>
       
@@ -301,120 +278,119 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
   <article class="card">
     <a class="fig" href="http://arxiv.org/abs/2403.03949" target="_blank" rel="noopener"><img class="thumb" src="images/realto.gif" alt="Reconciling Reality through Simulation" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">RSS 2024</span>
       <h3 class="ttl"><a href="http://arxiv.org/abs/2403.03949" target="_blank" rel="noopener">Reconciling Reality through Simulation: A Real-to-Sim-to-Real Approach for Robust Manipulation</a></h3>
       <p class="authors"><a href="https://marceltorne.github.io/" target="_blank" rel="noopener">Marcel Torne</a>, <a href="https://anthonysimeonov.github.io/" target="_blank" rel="noopener">Anthony Simeonov</a>, <span class="me">Zechu Li</span>, <span class="au">April Chan</span>, <a href="https://taochenshh.github.io/" target="_blank" rel="noopener">Tao Chen</a>, <a href="https://abhishekunique.github.io/" target="_blank" rel="noopener">Abhishek Gupta*</a>, <a href="https://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal*</a></p>
+      <div class="venue-row"><span class="vbadge">RSS 2024</span></div>
       <p class="desc">Robustifies real-world policies by fine-tuning them in digital twins built on the fly.</p>
       <div class="lnks"><a class="lnk" href="http://arxiv.org/abs/2403.03949" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://real-to-sim-to-real.github.io/RialTo/" target="_blank" rel="noopener">website</a><a class="lnk" href="https://github.com/real-to-sim-to-real/RialToPolicyLearning" target="_blank" rel="noopener">code</a></div>
       
     </div>
   </article>
-</div></div></div>
-<div class="grp"><div class="yr">2023</div><div class="cards">
+</div></div></section>
+<section class="grp"><h3 class="yr">2023</h3><div class="cards">
 <div class="node">
   <article class="card">
     <a class="fig" href="https://proceedings.mlr.press/v202/li23f/li23f.pdf" target="_blank" rel="noopener"><img class="thumb" src="files/parallel_scheme.png" alt="Parallel Q-Learning" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">ICML 2023</span>
       <h3 class="ttl"><a href="https://proceedings.mlr.press/v202/li23f/li23f.pdf" target="_blank" rel="noopener">Parallel Q-Learning: Scaling Off-policy Reinforcement Learning under Massively Parallel Simulation</a></h3>
       <p class="authors"><span class="me">Zechu Li*</span>, <a href="https://taochenshh.github.io/" target="_blank" rel="noopener">Tao Chen*</a>, <a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a>, <a href="https://anuragajay.github.io/" target="_blank" rel="noopener">Anurag Ajay</a>, <a href="https://people.csail.mit.edu/pulkitag/" target="_blank" rel="noopener">Pulkit Agrawal</a></p>
+      <div class="venue-row"><span class="vbadge">ICML 2023</span></div>
       <p class="desc">Scales off-policy RL to 10,000+ parallel environments.</p>
       <div class="lnks"><a class="lnk" href="https://proceedings.mlr.press/v202/li23f/li23f.pdf" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://github.com/Improbable-AI/pql" target="_blank" rel="noopener">code</a></div>
       
     </div>
   </article>
-</div><details class="more"><summary><span class="moreu"><span class="lbl-shut">2 more from 2023</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></span></summary>
-<div class="node alt">
+</div><details class="more"><summary><span class="lbl-shut">2 more from 2023</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></summary>
+<div class="node">
   <article class="card">
     <a class="fig" href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank" rel="noopener"><img class="thumb" src="images/games-14-00041-g001.png" alt="Social Learning for Sequential Driving Dilemmas" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">Games 2023</span>
       <h3 class="ttl"><a href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank" rel="noopener">Social Learning for Sequential Driving Dilemmas</a></h3>
       <p class="authors"><span class="au">Xu Chen</span>, <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a>, <span class="me">Zechu Li</span></p>
+      <div class="venue-row"><span class="vbadge">Games 2023</span></div>
       <p class="desc">Identifies when social dilemmas arise in autonomous vehicles&rsquo; sequential decisions.</p>
       <div class="lnks"><a class="lnk" href="https://www.mdpi.com/2073-4336/14/3/41" target="_blank" rel="noopener">paper</a></div>
       
     </div>
   </article>
 </div>
-<div class="node alt">
+<div class="node">
   <article class="card">
     <a class="fig" href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank" rel="noopener"><img class="thumb" src="files/gradient.png" alt="Stationary Deep Reinforcement Learning with Quantum K-spin Hamiltonian Equation" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">ICLR Workshop 2023</span>
       <h3 class="ttl"><a href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank" rel="noopener">Stationary Deep Reinforcement Learning with Quantum K-spin Hamiltonian Equation</a></h3>
       <p class="authors"><a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu*</a>, <span class="me">Zechu Li*</span>, <span class="au">Shixun Wu</span>, <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a></p>
+      <div class="venue-row"><span class="vbadge">ICLR Workshop 2023</span></div>
       <p class="desc">Adds a quantum K-spin Hamiltonian regularizer that steers policies toward better optima.</p>
       <div class="lnks"><a class="lnk" href="https://openreview.net/pdf?id=LVum7knUA7g" target="_blank" rel="noopener">paper</a></div>
       
     </div>
   </article>
-</div></details></div></div>
-<div class="grp"><div class="yr">2022</div><div class="cards">
+</div></details></div></section>
+<section class="grp"><h3 class="yr">2022</h3><div class="cards">
 <div class="node">
   <article class="card">
     <a class="fig" href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html" target="_blank" rel="noopener"><img class="thumb" src="files/distributed_scheme.png" alt="Homomorphic Matrix Completion" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">NeurIPS 2022</span>
       <h3 class="ttl"><a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html" target="_blank" rel="noopener">Homomorphic Matrix Completion</a></h3>
       <p class="authors"><a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu*</a>, <span class="me">Zechu Li*</span>, <a href="https://www.ee.columbia.edu/~wangx/" target="_blank" rel="noopener">Xiaodong Wang</a></p>
+      <div class="venue-row"><span class="vbadge">NeurIPS 2022</span></div>
       <p class="desc">Achieves exact matrix completion under differential privacy, at the cost of more samples.</p>
       <div class="lnks"><a class="lnk" href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/4f550cb7b30b59553e50cd08a9dbf068-Abstract-Conference.html" target="_blank" rel="noopener">paper</a></div>
       
     </div>
   </article>
-</div><details class="more"><summary><span class="moreu"><span class="lbl-shut">1 more from 2022</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></span></summary>
-<div class="node alt">
+</div><details class="more"><summary><span class="lbl-shut">1 more from 2022</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></summary>
+<div class="node">
   <article class="card">
     <a class="fig" href="https://ieeexplore.ieee.org/document/9827289" target="_blank" rel="noopener"><img class="thumb" src="images/social_learning.png" alt="Social Learning In Markov Games" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">IEEE IV 2022</span>
       <h3 class="ttl"><a href="https://ieeexplore.ieee.org/document/9827289" target="_blank" rel="noopener">Social Learning In Markov Games: Empowering Autonomous Driving</a></h3>
       <p class="authors"><span class="au">Xu Chen</span>, <span class="me">Zechu Li</span>, <a href="https://sharondi-columbia.wixsite.com/ditectlab" target="_blank" rel="noopener">Sharon (Xuan) Di</a></p>
+      <div class="venue-row"><span class="vbadge">IEEE IV 2022</span></div>
       <p class="desc">Studies how autonomous vehicles form social norms through RL in Markov games.</p>
       <div class="lnks"><a class="lnk" href="https://ieeexplore.ieee.org/document/9827289" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://github.com/supersglzc/Social-Learning" target="_blank" rel="noopener">code</a></div>
       
     </div>
   </article>
-</div></details></div></div>
-<div class="grp only"><div class="yr">2021</div><div class="cards"><details class="more"><summary><span class="moreu"><span class="lbl-shut">Show 2 papers</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></span></summary>
-<div class="node alt">
+</div></details></div></section>
+<section class="grp"><h3 class="yr">2021</h3><div class="cards"><details class="more"><summary><span class="lbl-shut">Show 2 papers</span><span class="lbl-open">Show fewer</span><i class="chev fas fa-chevron-down" aria-hidden="true"></i></summary>
+<div class="node">
   <article class="card">
     <a class="fig" href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank" rel="noopener"><img class="thumb" src="images/finrl_podracer.png" alt="FinRL-Podracer" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">ICAIF 2021</span>
       <h3 class="ttl"><a href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank" rel="noopener">FinRL-Podracer: High Performance and Scalable Deep Reinforcement Learning for Quantitative Finance</a></h3>
       <p class="authors"><span class="me">Zechu Li</span>, <a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu</a>, <span class="au">Jiahao Zheng</span>, <a href="https://zhaoranwang.github.io/" target="_blank" rel="noopener">Zhaoran Wang</a>, <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en" target="_blank" rel="noopener">Anwar Walid</a>, <a href="https://idea.edu.cn/person/guojian/" target="_blank" rel="noopener">Jian Guo</a></p>
+      <div class="venue-row"><span class="vbadge">ICAIF 2021</span></div>
       <p class="desc">Trains a NASDAQ-100 trading agent in 10 minutes on 80 A100 GPUs.</p>
       <div class="lnks"><a class="lnk" href="https://dl.acm.org/doi/10.1145/3490354.3494413" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/FinRL_Podracer" target="_blank" rel="noopener">code</a></div>
       
     </div>
   </article>
 </div>
-<div class="node alt">
+<div class="node">
   <article class="card">
     <a class="fig" href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank" rel="noopener"><img class="thumb" src="images/erl_podracer.png" alt="ElegantRL-Podracer" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">NeurIPS Workshop 2021</span>
       <h3 class="ttl"><a href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank" rel="noopener">ElegantRL-Podracer: Scalable and Elastic Library for Cloud-native Deep Reinforcement Learning</a></h3>
       <p class="authors"><a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu*</a>, <span class="me">Zechu Li*</span>, <a href="https://www.princeton.edu/~zy6/" target="_blank" rel="noopener">Zhuoran Yang</a>, <span class="au">Jiahao Zheng</span>, <a href="https://zhaoranwang.github.io/" target="_blank" rel="noopener">Zhaoran Wang</a>, <a href="https://scholar.google.com.au/citations?user=Q5oC62EAAAAJ&hl=en" target="_blank" rel="noopener">Anwar Walid</a>, <a href="https://idea.edu.cn/person/guojian/" target="_blank" rel="noopener">Jian Guo</a>, <a href="http://people.eecs.berkeley.edu/~jordan/" target="_blank" rel="noopener">Michael Jordan</a></p>
+      <div class="venue-row"><span class="vbadge">NeurIPS Workshop 2021</span></div>
       <p class="desc">Scales cloud-native DRL training across millions of GPU cores.</p>
       <div class="lnks"><a class="lnk" href="https://arxiv.org/pdf/2112.05923.pdf" target="_blank" rel="noopener">paper</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank" rel="noopener">code</a></div>
       
     </div>
   </article>
-</div></details></div></div>
-</div>
+</div></details></div></section>
 
-  <div class="sec"><h2>Open Source Projects</h2><span class="ln"></span><span class="cnt">2</span></div>
-  <div class="tl"><div class="grp"><div class="yr"></div><div class="cards">
+  <div class="sec"><h2>Open Source Projects</h2><span class="ln"></span></div>
+  <div class="cards">
 <div class="node">
   <article class="card">
     <a class="fig" href="https://github.com/AI4Finance-Foundation/FinRL" target="_blank" rel="noopener"><img class="thumb" src="images/finrl.png" alt="FinRL" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">GitHub</span><span class="stars" title="16,207 GitHub stars"><i class="fas fa-star" aria-hidden="true"></i>16.2k</span>
       <h3 class="ttl"><a href="https://github.com/AI4Finance-Foundation/FinRL" target="_blank" rel="noopener">FinRL: Financial Reinforcement Learning</a></h3>
       
+      <div class="venue-row"><span class="vbadge">GitHub</span><span class="stars" title="16,207 GitHub stars"><i class="fas fa-star" aria-hidden="true"></i>16.2k</span></div>
       <p class="desc">Brings deep reinforcement learning to quantitative finance and automated trading.</p>
       <div class="lnks"><a class="lnk" href="https://finrl.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">project page</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/FinRL" target="_blank" rel="noopener">code</a></div>
       
@@ -425,9 +401,9 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
   <article class="card">
     <a class="fig" href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank" rel="noopener"><img class="thumb" src="images/elegantrl.jpg" alt="ElegantRL “小雅”" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">GitHub</span><span class="stars" title="4,360 GitHub stars"><i class="fas fa-star" aria-hidden="true"></i>4.4k</span>
       <h3 class="ttl"><a href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank" rel="noopener">ElegantRL “小雅”: Massively Parallel Library for Cloud-native Deep Reinforcement Learning</a></h3>
       
+      <div class="venue-row"><span class="vbadge">GitHub</span><span class="stars" title="4,360 GitHub stars"><i class="fas fa-star" aria-hidden="true"></i>4.4k</span></div>
       <p class="desc">Runs massively parallel DRL training on cloud-native infrastructure.</p>
       <div class="lnks"><a class="lnk" href="https://elegantrl.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">project page</a><a class="lnk" href="https://github.com/AI4Finance-Foundation/ElegantRL" target="_blank" rel="noopener">code</a></div>
       <p class="pi">As a leader of this project, I have been contributing to</p>
@@ -436,6 +412,7 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
 <li>implemente SOTA algorithms and techniques,</li>
 <li>build the documentation website.</li>
 </ul>
+<details class="blogs"><summary>Tutorial blogs (6) <i class="chev fas fa-chevron-down" aria-hidden="true"></i></summary>
 <p class="pi">Starting from Mar. 2021, I started to write tutorial blogs for the community,</p>
 <ul class="plist">
 <li><a href="https://medium.com/mlearning-ai/elegantrl-much-much-more-stable-than-stable-baseline3-f096533c26db" target="_blank" rel="noopener">ElegantRL: Much More Stable Deep Reinforcement Learning Algorithms than Stable-Baseline3</a><span class="cite"><em>MLearning.ai</em>, Mar. 3, 2022</span></li>
@@ -444,26 +421,26 @@ h1{font-size:clamp(33px,6vw,47px);font-weight:800;letter-spacing:-.042em;line-he
 <li><a href="https://medium.com/mlearning-ai/elegantrl-demo-stock-trading-using-ddpg-part-ii-d3d97e01999f" target="_blank" rel="noopener">ElegantRL Demo: Stock Trading Using DDPG (Part II)</a><span class="cite"><em>MLearning.ai</em>, Apr. 19, 2021</span></li>
 <li><a href="https://elegantrl.medium.com/elegantrl-demo-stock-trading-using-ddpg-part-i-e77d7dc9d208" target="_blank" rel="noopener">ElegantRL Demo: Stock Trading Using DDPG (Part I)</a><span class="cite"><em>MLearning.ai</em>, Mar. 28, 2021</span></li>
 <li><a href="https://towardsdatascience.com/elegantrl-a-lightweight-and-stable-deep-reinforcement-learning-library-95cef5f3460b" target="_blank" rel="noopener">ElegantRL-Helloworld: A Lightweight and Stable Deep Reinforcement Learning Library</a><span class="cite"><em>Towards data science</em>, Mar. 4, 2021</span></li>
-</ul>
+</ul></details>
     </div>
   </article>
-</div></div></div></div>
+</div></div>
 
-  <div class="sec"><h2>Book Chapter</h2><span class="ln"></span><span class="cnt">1</span></div>
-  <div class="tl"><div class="grp"><div class="yr"></div><div class="cards">
+  <div class="sec"><h2>Book Chapter</h2><span class="ln"></span></div>
+  <div class="cards">
 <div class="node">
   <article class="card">
     <a class="fig" href="https://www.sciencedirect.com/science/article/pii/B9780128244470000157" target="_blank" rel="noopener"><img class="thumb" src="images/book.jpg" alt="High-performance Tensor Decompositions for Compressing and Accelerating Deep Neural Networks" loading="lazy" decoding="async"></a>
     <div>
-      <span class="vbadge">Elsevier 2021</span>
       <h3 class="ttl"><a href="https://www.sciencedirect.com/science/article/pii/B9780128244470000157" target="_blank" rel="noopener">High-performance Tensor Decompositions for Compressing and Accelerating Deep Neural Networks</a></h3>
       <p class="authors"><a href="http://www.tensorlet.org/" target="_blank" rel="noopener">Xiao-Yang Liu</a>, <span class="au">Yiming Fang</span>, <span class="au">Liuqing Yang</span>, <span class="me">Zechu Li</span>, <a href="http://www.bell-labs.com/about/researcher-profiles/anwarwalid/#gref" target="_blank" rel="noopener">Anwar Walid</a></p>
+      <div class="venue-row"><span class="vbadge">Elsevier 2021</span></div>
       <p class="desc">Compresses and accelerates neural networks with high-performance tensor decompositions.</p>
       <div class="lnks"><a class="lnk" href="https://www.sciencedirect.com/science/article/pii/B9780128244470000157" target="_blank" rel="noopener">chapter</a><a class="lnk" href="https://www.elsevier.com/books/tensors-for-data-processing/liu/978-0-12-824447-0" target="_blank" rel="noopener">book</a></div>
       
     </div>
   </article>
-</div></div></div></div>
+</div></div>
 </main>
 </div>
 

@@ -179,7 +179,7 @@ SELECTED = [
         "title": "Learning Multimodal Behaviors from Scratch with Diffusion Policy Gradient",
         "authors": [ME, a("rickmer"), a("taochen"), a("anurag"), a("pulkit"), a("georgia")],
         "venue": "NeurIPS", "year": "2024",
-        "media": ("img", "images/ddiffpg.png"),
+        "media": ("img", "images/ddiffpg_grid.webp"),
         "href": "https://arxiv.org/abs/2406.00681",
         "links": [("paper", "https://arxiv.org/abs/2406.00681"),
                   ("website", "https://supersglzc.github.io/projects/ddiffpg/"),
