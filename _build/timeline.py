@@ -57,8 +57,9 @@ h1{font-size:clamp(34px,5.4vw,48px);font-weight:500;letter-spacing:-.02em;line-h
 .social a[href*="linkedin.com"]{--b:#0a66c2}
 .social a:hover{background:var(--b);border-color:var(--b);color:#fff;transform:translateY(-1px)}
 .social i{color:var(--b);font-size:14px;width:14px;text-align:center;transition:color .15s}
-.social i.ai{font-size:16px}
+.social .ico{width:15px;height:15px;fill:var(--b);flex:none;transition:fill .15s}
 .social a:hover i{color:#fff}
+.social a:hover .ico{fill:#fff}
 .bio{margin-top:20px;display:grid;gap:16px;color:var(--body)}
 
 /* ---------- section headings ---------- */

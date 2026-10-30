@@ -31,7 +31,7 @@ PROFILE = {
     ],
     "links": [
         ("Email", "mailto:zl2993@columbia.edu", "far fa-envelope"),
-        ("Google Scholar", "https://scholar.google.com/citations?user=FI_6by0AAAAJ&hl=en", "ai ai-google-scholar"),
+        ("Google Scholar", "https://scholar.google.com/citations?user=FI_6by0AAAAJ&hl=en", "svg:google-scholar"),
         ("GitHub", "https://github.com/supersglzc", "fab fa-github"),
         ("X", "https://x.com/softraeh", "fab fa-x-twitter"),
         ("LinkedIn", "https://www.linkedin.com/in/zechu-li-66a7741b3/", "fab fa-linkedin"),

@@ -51,12 +51,25 @@ def venue_year(pub, short=False):
     return "%s %s" % (venue(pub, short), pub["year"])
 
 
+# Logos with no good icon-font glyph, inlined as SVG (paths from Simple Icons, CC0).
+SVG_ICONS = {
+    "google-scholar": ('<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 '
+                       '9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 '
+                       '0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>'),
+}
+
+
 def profile_links(sep=None, cls="lnk", icons=False):
     if sep is None:
         sep = '<span class="sep">/</span>'
     out = []
     for label, url, icon in PROFILE["links"]:
-        ic = '<i class="%s" aria-hidden="true"></i> ' % icon if icons else ""
+        if not icons:
+            ic = ""
+        elif icon.startswith("svg:"):
+            ic = SVG_ICONS[icon[4:]] + " "
+        else:
+            ic = '<i class="%s" aria-hidden="true"></i> ' % icon
         out.append('<a class="%s" href="%s"%s>%s%s</a>'
                    % (cls, url, '' if url.startswith("mailto:") else ' target="_blank" rel="noopener"', ic, label))
     return sep.join(out)
@@ -95,8 +108,7 @@ gtag('config', '%s');
 """ % (GA_ID, GA_ID)
 
 FA = ('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" '
-      'crossorigin="anonymous" referrerpolicy="no-referrer">\n'
-      '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">')
+      'crossorigin="anonymous" referrerpolicy="no-referrer">')
 
 
 def page(css, body, base, fonts="", extra_head="", theme="#ffffff", icons=False,
