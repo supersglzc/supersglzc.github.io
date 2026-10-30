@@ -139,6 +139,18 @@ SELECTED = [
         "desc": "Generates multi-task demonstrations for language-conditioned bimanual manipulation via RL.",
     },
     {
+        "id": "nautilus",
+        "title": "Nautilus: From One Prompt to Plug-and-Play Robot Learning",
+        "authors": [a("yufeng_eq"), a("jianfei_eq"), a("xiaogang"), a("yudeng"), ME, a("hanliu"),
+                    a("weiran"), a("vignesh"), a("franzius"), a("neumann"), a("georgia")],
+        "venue": "NeurIPS", "year": "2026",
+        "media": ("img", "images/nautilus.png"),
+        "href": "https://arxiv.org/abs/2605.11665v1",
+        "links": [("paper", "https://arxiv.org/abs/2605.11665v1"),
+                  ("website", "https://yufengjin.github.io/nautilus/")],
+        "desc": "Turns a single prompt into reproduction, evaluation, fine-tuning, and deployment workflows.",
+    },
+    {
         "id": "symdex",
         "title": "Morphologically Symmetric Reinforcement Learning for Ambidextrous Bimanual Manipulation",
         "authors": [ME, a("yufeng"), a("daniel_o"), a("semini"), a("puze"), a("georgia")],
@@ -210,18 +222,6 @@ SELECTED = [
 ]
 
 OTHER = [
-    {
-        "id": "nautilus",
-        "title": "Nautilus: From One Prompt to Plug-and-Play Robot Learning",
-        "authors": [a("yufeng_eq"), a("jianfei_eq"), a("xiaogang"), a("yudeng"), ME, a("hanliu"),
-                    a("weiran"), a("vignesh"), a("franzius"), a("neumann"), a("georgia")],
-        "venue": "NeurIPS", "year": "2026",
-        "media": ("img", "images/nautilus.png"),
-        "href": "https://arxiv.org/abs/2605.11665v1",
-        "links": [("paper", "https://arxiv.org/abs/2605.11665v1"),
-                  ("website", "https://yufengjin.github.io/nautilus/")],
-        "desc": "Turns a single prompt into reproduction, evaluation, fine-tuning, and deployment workflows.",
-    },
     {
         "id": "se3poseflow",
         "title": "SE(3)-PoseFlow: Estimating 6D Pose Distributions for Uncertainty-Aware Robotic Manipulation",
